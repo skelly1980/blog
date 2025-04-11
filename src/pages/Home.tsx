@@ -1,9 +1,9 @@
-import React from 'react'
 
-const Home = () => {
+export const Home = () => {
   return (
-    <div>Home</div>
+      <div className="bg-[url(/public/homepage-hero.png)] bg-cover h-[90vh] bg-no-repeat bg-center">
+        <div className="container mx-auto">
+        </div>
+      </div>
   )
 }
-
-export default Home
