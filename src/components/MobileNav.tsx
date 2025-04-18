@@ -1,7 +1,6 @@
-import { navMenu } from "../constants/data";
 import { FaSearch, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 
-export const MobileNav = ({ nav, handleNav }) => {
+export const MobileNav = ({ nav, handleNav, navMenu, SetNavMenu }) => {
   return (
     <div className={nav ? "fixed top-[13%] bg-black transition duration-700 ease-in-out h-full w-full translate-y-0" : "hidden transition duration-700 translate-y-full ease-in-out"}>
       <div className="flex items-center justify-center gap-4">

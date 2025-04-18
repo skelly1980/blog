@@ -1,27 +1,23 @@
-import { BlogEntry } from "../components/BlogEntry"
-
-const blogs = [
-  {
-    id: 1,
-    title: "blog 1",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-  },
-  {
-    id: 2,
-    title: "blog 2",
-    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-  }
-]
+import { useEffect, useState } from "react";
+import { BlogEntry } from "../components/BlogEntry";
+import { getBlogs } from "../api/blogs";
 
 export const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const blogs = getBlogs();
+    setBlogs(blogs);
+  }, []);
   return (
     <>
-    <div>Blog</div>
-    {blogs.map((blogEntry) => {
-      return (
-        <BlogEntry blogEntry={blogEntry} />
-      )
-    })}
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {blogs.map((blogEntry) => {
+            return <BlogEntry blogEntry={blogEntry} />;
+          })}
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
