@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LOGO from "../../public/Logo.png";
 import { getNavMenu } from "../api/nav";
 import { FaSearch, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { NavMenuItem } from "../types/nav";
 
 export const Footer = () => {
-  const [navMenu, setNavMenu] = useState([]);
+  const [navMenu, setNavMenu] = useState<NavMenuItem[]>([]);
 
   useEffect(() => {
       const navMenu = getNavMenu();

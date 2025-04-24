@@ -4,10 +4,11 @@ import LOGO from "../../public/Logo.png";
 import { FaSearch, FaBars } from "react-icons/fa";
 import { MobileNav } from "./MobileNav";
 import { AiOutlineClose } from "react-icons/ai";
+import { NavMenuItem } from "../types/nav";
 
-export const Navbar = (props) => {
+export const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [navMenu, setNavMenu] = useState([]);
+  const [navMenu, setNavMenu] = useState<NavMenuItem[]>([]);
   const handleNav = () => {
     setNav(!nav);
   };

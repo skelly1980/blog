@@ -1,8 +1,16 @@
 import { FaSearch, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { NavMenuItem } from "../types/nav";
 
-export const MobileNav = ({ nav, handleNav, navMenu, SetNavMenu }) => {
+type Props = {
+  nav: boolean;
+  handleNav: () => void;
+  setNavMenu: React.Dispatch<React.SetStateAction<NavMenuItem[]>>;
+  navMenu: NavMenuItem[];
+}
+
+export const MobileNav = ({ nav, navMenu, }: Props) => {
   return (
-    <div className={nav ? "fixed top-[13%] bg-black transition duration-700 ease-in-out h-full w-full translate-y-0" : "hidden transition duration-700 translate-y-full ease-in-out"}>
+    <div className={nav ? "fixed top-[13%] bg-black transition duration-700 ease-in-out h-full w-full translate-y-0 z-30" : "hidden transition duration-700 translate-y-full ease-in-out"}>
       <div className="flex items-center justify-center gap-4">
         <a href="#" className="text-white">
           <FaFacebook size={48} />

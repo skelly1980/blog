@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { BlogEntry } from "../components/BlogEntry";
 import { getBlogs } from "../api/blogs";
+import { Blog } from "../types/blog";
 
-export const Blog = () => {
-  const [blogs, setBlogs] = useState([]);
+export const Blogs = () => {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
     const blogs = getBlogs();

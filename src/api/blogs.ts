@@ -1,13 +1,8 @@
 import coding from "../../public/blog-coding.png";
 import flyFishing from "../../public/blog-flyfishing.png";
 import hockey from "../../public/blog-hockey.png";
+import { Blog } from "../types/blog";
 
-export interface Blog {
-  id: number;
-  title: string;
-  img: string;
-  content: string;
-}
 
 export const getBlogs = (): Blog[] => {
   return [

@@ -1,5 +1,10 @@
+import { Blog } from "../types/blog";
 
-export const BlogEntry = (props) => {
+type Props = {
+  blogEntry: Blog;
+}
+
+export const BlogEntry = (props: Props) => {
     const {blogEntry} = props;
   return (
     <div>

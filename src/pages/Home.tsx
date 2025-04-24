@@ -1,6 +1,6 @@
-import { getBlogs, Blog } from "../api/blogs";
+import { getBlogs } from "../api/blogs";
 
-export const Home: React.FC = (props) => {
+export const Home = () => {
   const blogs = getBlogs();
   return (
     <>
