@@ -10,7 +10,7 @@ export const getNavMenu = () => {
         },
         {
             title: "Blog",
-            href: "/blog",
+            href: "/blogs",
             dropdown: [
                 {
                     title: "Coding",

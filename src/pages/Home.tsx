@@ -19,12 +19,23 @@ export const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3">
             <div className="grid-cols-1 lg:col-span-2 p-4">
               <h2>What's Trending</h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {blogs.map((blog) => (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-8">
+                {blogs.slice(0, 3).map((blog) => (
                   <div key={blog.id}>
-                    <h2 className="text-center text-2xl uppercase">{blog.title}</h2>
+                    <h2 className="text-2xl uppercase">{blog.title}</h2>
                     <img width={450} src={blog.img} alt={blog.title} />
-                    <p>{blog.content}</p>
+                    <div className="pb-4">
+                      <small className="block py-2">{blog.tags}</small>
+                      <small className="block pb-2">{blog.date}</small>
+                      <small className="block pb-2">{blog.description}</small>
+                    </div>
+                    <p>
+                      {blog.content
+                        .split(". ")
+                        .slice(0, 6)
+                        .join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}
+                    </p>
+                        <span className="flex justify-end"><a href="/blogs">Read more</a></span>
                   </div>
                 ))}
               </div>
@@ -32,11 +43,18 @@ export const Home = () => {
             <div className="p-4">
               <h2>Latest Blogs</h2>
               <div>
-                {blogs.map((blog) => (
+                {blogs.slice(0, 3).map((blog) => (
                   <div key={blog.title}>
                     <h2>{blog.title}</h2>
                     <img width={250} src={blog.img} alt={blog.title} />
-                    <p>{blog.content}</p>
+                    <p>
+                      {blog.content
+                        .split(". ")
+                        .slice(0, 6)
+                        .join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}
+                    </p>
+                    <span className="flex justify-end"><a href="/blogs">Read more</a></span>
+
                   </div>
                 ))}
               </div>

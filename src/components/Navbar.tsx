@@ -5,12 +5,20 @@ import { FaSearch, FaBars } from "react-icons/fa";
 import { MobileNav } from "./MobileNav";
 import { AiOutlineClose } from "react-icons/ai";
 import { NavMenuItem } from "../types/nav";
+import { Signup } from "./Auth/Signup";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [navMenu, setNavMenu] = useState<NavMenuItem[]>([]);
   const handleNav = () => {
     setNav(!nav);
+  };
+
+  const [showSignUp, setShowSignUp] = useState(false);
+  const toggleSignUp = (event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setShowSignUp(!showSignUp);
   };
 
   useEffect(() => {
@@ -52,7 +60,7 @@ export const Navbar = () => {
               <input className="placeholder-white px-4" type="Search" placeholder="Search..." />
               <FaSearch className="text-white mr-4" />
             </div>
-            <p className="text-white uppercase font-sans3 text-[1rem] font-bold"><a href="/signup">Subscribe</a></p>
+            <p className="text-white uppercase font-sans3 text-[1rem] font-bold"><a onClick={toggleSignUp}>Subscribe</a></p>
           </div>
         </div>
         <div className="lg:hidden">
@@ -61,7 +69,8 @@ export const Navbar = () => {
             </button>
           </div>
       </div>
-      <MobileNav nav={nav} handleNav={handleNav} navMenu={navMenu} setNavMenu={setNavMenu}  />
+      <MobileNav nav={nav} navMenu={navMenu}  />
+      {showSignUp && <Signup toggleSignUp={toggleSignUp} />}
     </>
   );
 };

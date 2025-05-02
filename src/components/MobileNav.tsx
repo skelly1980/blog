@@ -3,8 +3,8 @@ import { NavMenuItem } from "../types/nav";
 
 type Props = {
   nav: boolean;
-  handleNav: () => void;
-  setNavMenu: React.Dispatch<React.SetStateAction<NavMenuItem[]>>;
+  // handleNav: () => void;
+  // setNavMenu: React.Dispatch<React.SetStateAction<NavMenuItem[]>>;
   navMenu: NavMenuItem[];
 }
 
