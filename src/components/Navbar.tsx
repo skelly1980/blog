@@ -64,7 +64,7 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="lg:hidden">
-            <button onClick={handleNav} className="absolute top-4 right-4 bg-gray-800 p-2 rounded-full">
+            <button onClick={handleNav} className="fixed top-4 right-4 bg-gray-800 p-2 rounded-full z-40">
               {nav? <AiOutlineClose className="text-white text-2xl" />:<FaBars className="text-white text-2xl" />}
             </button>
           </div>

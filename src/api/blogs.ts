@@ -1,19 +1,32 @@
 import coding from "../../public/blog-coding.png";
 import flyFishing from "../../public/blog-flyfishing.png";
 import hockey from "../../public/blog-hockey.png";
-import { Blog } from "../types/blog";
+import { Blog, BlogContent } from "../types/blog";
 
+export const createBlog = (blog: BlogContent): Blog => {
+	// Save the blog to the database or perform any other action
+	return {
+		id: 1,
+		date: "2025-04-25",
+    ...blog
+	};
+};
 
 export const getBlogs = (): Blog[] => {
-  return [
-    {
-      id: 1,
-      title: "Learning to Code: Why Slower Is Sometimes Smarter",
-      img: coding,
-      description: "Bootcamps and college coding courses often move too fast for beginners. Here's why learning to code at your own pace — through Udemy, tutoring, and repetition — is a better path.",
-      tags: ["coding", "learning to code", "bootcamp vs self taught", "udemy", "programming advice", "coding bootcamps", "programming for beginners"],
-      date: "2025-04-25",
-      content: `
+	fetch("http://localhost:3000/api/blogs")
+		.then((response) => response.json())
+		.then((data) => {
+			console.log("Blogs fetched successfully:", data);
+		});
+	return [
+		{
+			id: 1,
+			title: "Learning to Code: Why Slower Is Sometimes Smarter",
+			img: coding,
+			description: "Bootcamps and college coding courses often move too fast for beginners. Here's why learning to code at your own pace — through Udemy, tutoring, and repetition — is a better path.",
+			tags: ["coding", "learning to code", "bootcamp vs self taught", "udemy", "programming advice", "coding bootcamps", "programming for beginners"],
+			date: "2025-04-25",
+			content: `
 Learning to Code: Why Slower Is Sometimes Smarter
 
 When it comes to learning how to code, there’s no shortage of advice. Some people say you need a computer science degree. Others swear by intensive coding bootcamps. And while both paths *can* work for some, they often move too quickly for most beginners to truly succeed.
@@ -54,24 +67,24 @@ If you’re just starting out, give yourself permission to go slow. Don’t feel
 
 Because in the world of coding, slow and steady really *does* win the race.
 `,
-    },
-    {
-      id: 2,
-      title: "blog 2",
-      img: flyFishing,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-      tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
-      date: "2025-04-28",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-    },
-    {
-      id: 3,
-      title: "Avalanche’s Speed and Execution Overwhelm Stars in 2-0 Win",
-      img: hockey,
-      description: "The Colorado Avalanche showcased their relentless speed and precision to defeat the Dallas Stars 2-0, tying their playoff series 2-2. Here’s how Colorado’s execution left Dallas struggling to keep up.",
-      tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
-      date: "2025-04-28",
-      content: `​The Colorado Avalanche delivered a commanding performance in Game 4 of their first-round playoff series, defeating the Dallas Stars 4-0 at Ball Arena on Saturday night. This victory ties the series at 2-2 and showcased the Avalanche's speed and execution, which proved too much for the Stars to handle.​
+		},
+		{
+			id: 2,
+			title: "blog 2",
+			img: flyFishing,
+			description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
+			tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
+			date: "2025-04-28",
+			content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
+		},
+		{
+			id: 3,
+			title: "Avalanche’s Speed and Execution Overwhelm Stars in 2-0 Win",
+			img: hockey,
+			description: "The Colorado Avalanche showcased their relentless speed and precision to defeat the Dallas Stars 2-0, tying their playoff series 2-2. Here’s how Colorado’s execution left Dallas struggling to keep up.",
+			tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
+			date: "2025-04-28",
+			content: `​The Colorado Avalanche delivered a commanding performance in Game 4 of their first-round playoff series, defeating the Dallas Stars 4-0 at Ball Arena on Saturday night. This victory ties the series at 2-2 and showcased the Avalanche's speed and execution, which proved too much for the Stars to handle.​
 
 Avalanche's Speed Overwhelms Stars
 From the outset, Colorado's relentless pace set the tone. The Avalanche outshot the Stars 48-23, consistently pressuring Dallas and creating scoring opportunities. Logan O'Connor opened the scoring with a shorthanded goal, followed by a power-play goal from Nathan MacKinnon, highlighting Colorado's special teams' effectiveness. ​
@@ -83,24 +96,24 @@ Goaltender Mackenzie Blackwood recorded his first career playoff shutout with 23
 
 Looking Ahead
 With the series now tied, the momentum shifts as the teams prepare for Game 5 in Dallas on Monday. The Avalanche's display of speed, execution, and depth in Game 4 sets a high bar, and the Stars will need to adjust to counter Colorado's dynamic play.`,
-    },
-    {
-      id: 4,
-      title: "blog 4",
-      img: hockey,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-      tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
-      date: "2025-04-28",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-    },
-    {
-      id: 5,
-      title: "blog 5",
-      img: hockey,
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-      tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
-      date: "2025-04-28",
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
-    },
-  ];
+		},
+		{
+			id: 4,
+			title: "blog 4",
+			img: hockey,
+			description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
+			tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
+			date: "2025-04-28",
+			content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
+		},
+		{
+			id: 5,
+			title: "blog 5",
+			img: hockey,
+			description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
+			tags: ["#NHL", "#ColoradoAvalanche", "#DallasStars", "#StanleyCupPlayoffs", "#Hockey", "#SportsAnalysis", "#Playoffs2025"],
+			date: "2025-04-28",
+			content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil odit similique repellendus rerum est quam quasi in temporibus pariatur id?",
+		},
+	];
 };
