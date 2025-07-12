@@ -8,9 +8,13 @@ export const Blogs = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [showCreateDialog, setShowCreateDialog] = useState(false);
 
-  useEffect(() => {
-    const blogs = getBlogs();
+  const getBlogsData = async () => {
+    const blogs = await getBlogs();
     setBlogs(blogs);
+  }
+
+  useEffect(() => {
+    getBlogsData();
   }, []);
 
   const toggleCreateDialog = () => {
