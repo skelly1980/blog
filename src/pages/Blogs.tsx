@@ -1,29 +1,31 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BlogEntry } from "../components/BlogEntry";
-import { createBlog, getBlogs } from "../api/blogs";
-import { Blog, BlogContent } from "../types/blog";
+// import { createBlog } from "../api/blogs";
+import { BlogContent } from "../types/blog";
 import { CreateBlogDialog } from "../components/CreateBlogDialog";
+import { useBlogsStore } from "../hooks/blogs";
 
 export const Blogs = () => {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
+  // const [blogs, setBlogs] = useState<Blog[]>([]);
   const [showCreateDialog, setShowCreateDialog] = useState(false);
 
-  const getBlogsData = async () => {
-    const blogs = await getBlogs();
-    setBlogs(blogs);
-  }
+  // const getBlogsData = async () => {
+  //   const blogs = await getBlogs();
+  //   setBlogs(blogs);
+  // }
 
-  useEffect(() => {
-    getBlogsData();
-  }, []);
+  // useEffect(() => {
+  //   getBlogsData();
+  // }, []);
+
+  const {blogs, createBlog} = useBlogsStore();
 
   const toggleCreateDialog = () => {
     setShowCreateDialog(!showCreateDialog);
   }
 
   const handleCreateBlog = (blog: BlogContent) => {
-    const newBlog = createBlog(blog);
-    setBlogs([...blogs, newBlog]);
+    createBlog(blog);
     toggleCreateDialog();
   }
 

@@ -31,7 +31,7 @@ export const Navbar = () => {
         <div className="container mx-auto lg:flex items-center justify-between p-8">
           <div className="text-white uppercase text-3xl flex items-center gap-2">
             <img src={LOGO} width={50} alt="Blog Logo" />
-            <h3 className="font-sans3 text-7xl md:text-4xl">KellyDEV</h3>
+            <h3 className="pb-[0!important] font-sans3 text-7xl md:text-4xl">KellyDEV</h3>
           </div>
           <ul className="hidden lg:flex items-center justify-between gap-4 uppercase text-white font-bold">
           {navMenu.map((menu) => {
@@ -60,12 +60,12 @@ export const Navbar = () => {
               <input className="placeholder-white px-4" type="Search" placeholder="Search..." />
               <FaSearch className="text-white mr-4" />
             </div>
-            <p className="text-white uppercase font-sans3 text-[1rem] font-bold"><a onClick={toggleSignUp}>Subscribe</a></p>
+            <p className="text-white uppercase font-sans3 text-[1rem] font-bold p-0"><a onClick={toggleSignUp}>Subscribe</a></p>
           </div>
         </div>
-        <div className="lg:hidden">
-            <button onClick={handleNav} className="fixed top-4 right-4 bg-gray-800 p-2 rounded-full z-40">
-              {nav? <AiOutlineClose className="text-white text-2xl" />:<FaBars className="text-white text-2xl" />}
+        <div className="fixed top-10 right-4 z-40 lg:hidden">
+            <button onClick={handleNav} className="bg-gray-800 p-2 rounded-full">
+              {nav? <AiOutlineClose className="text-white text-2xl z-10" />:<FaBars className="text-white text-2xl" />}
             </button>
           </div>
       </div>

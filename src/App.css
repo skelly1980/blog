@@ -1,3 +1,31 @@
 @import "tailwindcss";
 
 
+@layer {
+    .btn-primary {
+        text-transform: uppercase;
+        border: 2px solid black;
+        padding-inline: 1rem;
+        padding-block: .5rem;
+
+        &:hover {
+            background-color: rgb(0, 0, 0, 0.5);
+            color: #ffffff;
+            border: 2px solid #000000;
+        }
+    }
+
+    .btn-secondary {
+        text-transform: uppercase;
+        background-color: #000000;
+        color: #ffffff;
+        padding-inline: 1rem;
+        padding-block: .5rem;
+
+        &:hover {
+            background-color: rgb(0, 0, 0, 0.5);
+            color: #ffffff;
+            border: 2px solid #000000;
+        }
+    }
+}
