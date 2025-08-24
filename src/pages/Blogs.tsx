@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { BlogEntry } from "../components/BlogEntry";
 // import { createBlog } from "../api/blogs";
+import { MdChevronRight } from "react-icons/md";
 import { BlogContent } from "../types/blog";
 import { CreateBlogDialog } from "../components/CreateBlogDialog";
 import { useBlogsStore } from "../hooks/blogs";
+import { tailwindStyles } from "../styles/tailwindStyles";
+import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
+import { ButtonOutline } from "../components/buttons/ButtonOutline";
 
 export const Blogs = () => {
   // const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -18,30 +22,80 @@ export const Blogs = () => {
   //   getBlogsData();
   // }, []);
 
-  const {blogs, createBlog} = useBlogsStore();
+  const { blogs, createBlog } = useBlogsStore();
 
   const toggleCreateDialog = () => {
     setShowCreateDialog(!showCreateDialog);
-  }
+  };
 
   const handleCreateBlog = (blog: BlogContent) => {
     createBlog(blog);
     toggleCreateDialog();
-  }
+  };
 
   return (
     <>
-      <div className="container mx-auto">
+      <div className="bg-[url(/public/layout/102/Placeholder-Image.png)] bg-cover h-[90vh] bg-no-repeat bg-center flex flex-col items-center justify-center">
+        <div className="max-w-[768px] text-center">
+          <h1 className="uppercase">Explore Web Development, Hockey, and Outdoor Adventures</h1>
+          <p>Welcome to our blog where passion meets expertise! Dive into insightful articles on web development, thrilling hockey updates, and the great outdoors with fly-fishing and hunting tips.</p>
+        </div>
+      </div>
+      <section className={`${tailwindStyles.container}`}>
+        <div className="text-center pb-20">
+          <small>Blog</small>
+          <h2>Latest Insights and Tips</h2>
+          <p>Explore our latest posts on web development and more.</p>
+        </div>
+        <div className="grid grid-cols-1 place-items-center md:grid-cols-3 md:place-items-stretch gap-6">
+          <div>
+            <img width={405} height={270} src={Placeholder} alt="" />
+            <div style={{justifyContent: "flex-start"}} className={`${tailwindStyles.flexBetween} py-6`}>
+              <p className="pr-4">Web</p>
+              <p>5 min read</p>
+            </div>
+            <h5 style={{paddingBottom: "8px"}}>Mastering Responsive Design Techniques</h5>
+            <p className="pb-6">Learn how to create websites that adapt to any device.</p>
+            <a className={`${tailwindStyles.btnSpace}`} href="#">Read more <MdChevronRight/></a>
+          </div>
+          <div>
+            <img width={405} height={270} src={Placeholder} alt="" />
+            <div style={{justifyContent: "flex-start"}} className={`${tailwindStyles.flexBetween} py-6`}>
+              <p className="pr-4">Hockey</p>
+              <p>5 min read</p>
+            </div>
+            <h5 style={{paddingBottom: "8px"}}>The thrill of game day</h5>
+            <p className="pb-6">Experience the excitement of live hockey matches and fan culture.</p>
+            <a className={`${tailwindStyles.btnSpace}`} href="#">Read more <MdChevronRight/></a>
+          </div>
+          <div>
+            <img width={405} height={270} src={Placeholder} alt="" />
+            <div style={{justifyContent: "flex-start"}} className={`${tailwindStyles.flexBetween} py-6`}>
+              <p className="pr-4">Fishing</p>
+              <p>5 min read</p>
+            </div>
+            <h5 style={{paddingBottom: "8px"}}>Tips for Successful Fly-Fishing</h5>
+            <p className="pb-6">Discover techniques to improve your fly-fishing skills and catch more fish.</p>
+            <a className={`${tailwindStyles.btnSpace}`} href="#">Read more <MdChevronRight/></a>
+          </div>
+        </div>
+        <div className="text-center pt-20">
+          <ButtonOutline>
+            <a href="#">View all</a>
+          </ButtonOutline>
+        </div>
+      </section>
+      <section className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
           {blogs.map((blogEntry) => {
             return <BlogEntry blogEntry={blogEntry} />;
           })}
         </div>
-      <button onClick={toggleCreateDialog} className="uppercase text-white bg-red-600 hover:bg-red-600/80 px-3.5 py-2 rounded-sm mb-4" type="submit">
+        <button onClick={toggleCreateDialog} className="uppercase text-white bg-red-600 hover:bg-red-600/80 px-3.5 py-2 rounded-sm mb-4" type="submit">
           Create Blog
         </button>
-      {showCreateDialog && <CreateBlogDialog handleCreateBlog={handleCreateBlog}  toggleCreateDialog={toggleCreateDialog}/>}
-      </div>
+        {showCreateDialog && <CreateBlogDialog handleCreateBlog={handleCreateBlog} toggleCreateDialog={toggleCreateDialog} />}
+      </section>
     </>
   );
 };

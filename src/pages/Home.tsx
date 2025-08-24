@@ -1,8 +1,9 @@
 import { useBlogsStore } from "../hooks/blogs";
 import { MdChevronRight } from "react-icons/md";
 import Relume from "../../public/Layout/102/Relume.png";
-import Placeholder from "../../public/Layout/102/Placeholder Image.png";
+import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
 import { tailwindStyles } from "../styles/tailwindStyles";
+import { ButtonOutline } from "../components/buttons/ButtonOutline";
 
 export const Home = () => {
   const { blogs } = useBlogsStore();
@@ -58,9 +59,9 @@ export const Home = () => {
               <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Connect with fellow enthusiasts and share your adventures.</li>
             </ul>
             <div className={`${tailwindStyles.btnSpace}`}>
-              <a className="btn-primary" href="#">
-                <button>Learn More</button>
-              </a>
+              <ButtonOutline>
+                <a className="btn-primary" href="#">Learn More</a>
+              </ButtonOutline>
               <a href="#">Sign Up</a>
             </div>
           </div>
@@ -84,44 +85,42 @@ export const Home = () => {
                   <h2>Dive into Web Development Trends</h2>
                   <p className="pb-8">Stay updated with the latest in web design and development techniques.</p>
                   <div className={`${tailwindStyles.btnSpace} pb-12`}>
-                    <a className="btn-primary" href="#">
-                      <button>Learn More</button>
-                    </a>
+                    <ButtonOutline>Learn More</ButtonOutline>
                     <a className="flex items-center gap-8" href="#">
                       Join
                       <span>
                         <MdChevronRight />
                       </span>
                     </a>
-                </div>
+                  </div>
                 </div>
                 <img width={684} height={360} src={Placeholder} alt="" />
               </div>
             </div>
-             <div style={{ alignItems: "stretch" }} className={`${tailwindStyles.flexBetween} my-8 gap-8`}>
-                <div className="basis-1/2 border-2 p-6">
-                  <img width={48} height={48} src={Relume} alt="" />
-                  <h5 className="pt-4">Get Your Hockey Fix Here</h5>
-                  <p className="pt-2">Latest news, tips, and insights on hockey</p>
-                  <a className="flex items-center gap-3 pt-6 pb-20" href="#">
-                    Scores
-                    <span>
-                      <MdChevronRight />
-                    </span>
-                  </a>
-                </div>
-                <div className="border-2 basis-1/2 p-6">
-                  <img width={48} height={48} src={Relume} alt="" />
-                  <h5 className="pt-4">Explore Fly-Fishing Techniques and Tips</h5>
-                  <p className="pt-2">Enhance your skills with expert advice and guides.</p>
-                  <a className="flex items-center gap-3 pt-6 pb-20" href="#">
-                    Casts
-                    <span>
-                      <MdChevronRight />
-                    </span>
-                  </a>
-                </div>
+            <div style={{ alignItems: "stretch" }} className={`${tailwindStyles.flexBetween} my-8 gap-8`}>
+              <div className="basis-1/2 border-2 p-6">
+                <img width={48} height={48} src={Relume} alt="" />
+                <h5 className="pt-4">Get Your Hockey Fix Here</h5>
+                <p className="pt-2">Latest news, tips, and insights on hockey</p>
+                <a className="flex items-center gap-3 pt-6 pb-20" href="#">
+                  Scores
+                  <span>
+                    <MdChevronRight />
+                  </span>
+                </a>
               </div>
+              <div className="border-2 basis-1/2 p-6">
+                <img width={48} height={48} src={Relume} alt="" />
+                <h5 className="pt-4">Explore Fly-Fishing Techniques and Tips</h5>
+                <p className="pt-2">Enhance your skills with expert advice and guides.</p>
+                <a className="flex items-center gap-3 pt-6 pb-20" href="#">
+                  Casts
+                  <span>
+                    <MdChevronRight />
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
           <div>
             <div className="pb-8">
@@ -151,9 +150,16 @@ export const Home = () => {
                 <h5>Join Our Community of Enthusiasts</h5>
                 <p className="pt-6">Engage with fellow enthusiasts and share your experiences in web development and outdoor activities.</p>
                 <div className={`${tailwindStyles.btnSpace} pt-8`}>
-                  <a className="btn-primary" href="#">Engage</a>
-                  <a className="flex items-center gap-4" href="#">Subscribe <span><MdChevronRight /></span></a>
-              </div>
+                  <a className="btn-primary" href="#">
+                    Engage
+                  </a>
+                  <a className="flex items-center gap-4" href="#">
+                    Subscribe{" "}
+                    <span>
+                      <MdChevronRight />
+                    </span>
+                  </a>
+                </div>
               </div>
               <img className="pt-11" width={624} height={360} src={Placeholder} alt="" />
             </div>
@@ -166,49 +172,51 @@ export const Home = () => {
             <h3>Stay Updated with Our Newsletter</h3>
             <p>Get the latest insights on web development and more!</p>
           </div>
-            <div className={`${tailwindStyles.btnSpace} pt-6 md:p-0`}>
-              <a className="btn-secondary" href="#">Subscribe</a>
-              <a className="btn-primary" href="#">Learn More</a>
+          <div className={`${tailwindStyles.btnSpace} pt-6 md:p-0`}>
+            <a className="btn-secondary" href="#">
+              Subscribe
+            </a>
+            <a className="btn-primary" href="#">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </section>
+      <section className={`${tailwindStyles.container} mx-auto`}>
+        <div className="grid grid-cols-1 lg:grid-cols-3">
+          <div className="grid-cols-1 lg:col-span-2 p-4">
+            <h2>What's Trending</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-8">
+              {blogs.slice(0, 3).map((blog) => (
+                <div key={blog.id}>
+                  <h2 className="text-2xl uppercase">{blog.title}</h2>
+                  <img width={450} src={blog.img} alt={blog.title} />
+                  <div className="pb-4">
+                    {/* <small className="block py-2">{blog.tags}</small> */}
+                    <small className="block pb-2">{blog.date}</small>
+                    <small className="block pb-2">{blog.description}</small>
+                  </div>
+                  <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
+                  <span className="flex justify-end">
+                    <a href="/blogs">Read more</a>
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
-      </section>
-      <section className="bg-white">
-        <div className="tailwindStyles.container mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3">
-            <div className="grid-cols-1 lg:col-span-2 p-4">
-              <h2>What's Trending</h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-8">
-                {blogs.slice(0, 3).map((blog) => (
-                  <div key={blog.id}>
-                    <h2 className="text-2xl uppercase">{blog.title}</h2>
-                    <img width={450} src={blog.img} alt={blog.title} />
-                    <div className="pb-4">
-                      <small className="block py-2">{blog.tags}</small>
-                      <small className="block pb-2">{blog.date}</small>
-                      <small className="block pb-2">{blog.description}</small>
-                    </div>
-                    <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
-                    <span className="flex justify-end">
-                      <a href="/blogs">Read more</a>
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="p-4">
-              <h2>Latest Blogs</h2>
-              <div>
-                {blogs.slice(0, 3).map((blog) => (
-                  <div key={blog.title}>
-                    <h2>{blog.title}</h2>
-                    <img width={250} src={blog.img} alt={blog.title} />
-                    <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
-                    <span className="flex justify-end">
-                      <a href="/blogs">Read more</a>
-                    </span>
-                  </div>
-                ))}
-              </div>
+          <div className="p-4">
+            <h2>Latest Blogs</h2>
+            <div>
+              {blogs.slice(0, 3).map((blog) => (
+                <div key={blog.title}>
+                  <h2>{blog.title}</h2>
+                  <img width={250} src={blog.img} alt={blog.title} />
+                  <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
+                  <span className="flex justify-end">
+                    <a href="/blogs">Read more</a>
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
