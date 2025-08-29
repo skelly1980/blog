@@ -8,6 +8,8 @@ import { useBlogsStore } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
 import { ButtonOutline } from "../components/buttons/ButtonOutline";
+import { ButtonSecondary } from "../components/buttons/ButtonSecondary";
+import { Link } from "react-router-dom";
 
 export const Blogs = () => {
   // const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -36,10 +38,12 @@ export const Blogs = () => {
   return (
     <>
       <div className="bg-[url(/public/layout/102/Placeholder-Image.png)] bg-cover h-[90vh] bg-no-repeat bg-center flex flex-col items-center justify-center">
-        <div className="max-w-[768px] text-center">
-          <h1 className="uppercase">Explore Web Development, Hockey, and Outdoor Adventures</h1>
-          <p>Welcome to our blog where passion meets expertise! Dive into insightful articles on web development, thrilling hockey updates, and the great outdoors with fly-fishing and hunting tips.</p>
-        </div>
+        <section className={`${tailwindStyles.container}`}>
+          <div className="text-center">
+            <h1 style={{fontSize: "clamp(1rem, 6vw, 4rem)"}} className="uppercase">Explore Web Development, Hockey, and Outdoor Adventures</h1>
+            <p>Welcome to our blog where passion meets expertise! Dive into insightful articles on web<br /> development, thrilling hockey updates, and the great outdoors with fly-fishing and hunting tips.</p>
+          </div>
+        </section>
       </div>
       <section className={`${tailwindStyles.container}`}>
         <div className="text-center pb-20">
@@ -56,7 +60,7 @@ export const Blogs = () => {
             </div>
             <h5 style={{paddingBottom: "8px"}}>Mastering Responsive Design Techniques</h5>
             <p className="pb-6">Learn how to create websites that adapt to any device.</p>
-            <a className={`${tailwindStyles.btnSpace}`} href="#">Read more <MdChevronRight/></a>
+            <Link className={`${tailwindStyles.btnSpace}`} to="#">Read more <MdChevronRight/></Link>
           </div>
           <div>
             <img width={405} height={270} src={Placeholder} alt="" />
@@ -66,7 +70,7 @@ export const Blogs = () => {
             </div>
             <h5 style={{paddingBottom: "8px"}}>The thrill of game day</h5>
             <p className="pb-6">Experience the excitement of live hockey matches and fan culture.</p>
-            <a className={`${tailwindStyles.btnSpace}`} href="#">Read more <MdChevronRight/></a>
+            <Link className={`${tailwindStyles.btnSpace}`} to="#">Read more <MdChevronRight/></Link>
           </div>
           <div>
             <img width={405} height={270} src={Placeholder} alt="" />
@@ -76,7 +80,7 @@ export const Blogs = () => {
             </div>
             <h5 style={{paddingBottom: "8px"}}>Tips for Successful Fly-Fishing</h5>
             <p className="pb-6">Discover techniques to improve your fly-fishing skills and catch more fish.</p>
-            <a className={`${tailwindStyles.btnSpace}`} href="#">Read more <MdChevronRight/></a>
+            <Link className={`${tailwindStyles.btnSpace}`} to="#">Read more <MdChevronRight/></Link>
           </div>
         </div>
         <div className="text-center pt-20">
@@ -85,7 +89,19 @@ export const Blogs = () => {
           </ButtonOutline>
         </div>
       </section>
-      <section className="container mx-auto">
+      <section className={`${tailwindStyles.container}`}>
+        <h2>Stay updated with our Insights</h2>
+        <p className="pb-8">Subscribe to our newsletter for the latest posts on web development, hockey, and outdoor adventures.</p>
+        <div className={`${tailwindStyles.btnSpace}`}>
+        <ButtonSecondary>
+          <Link to="#">Subscribe</Link>
+        </ButtonSecondary>
+        <ButtonOutline>
+          <Link to="#">Learn More</Link>
+        </ButtonOutline>
+        </div>
+      </section>
+      <section className={`${tailwindStyles.container}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
           {blogs.map((blogEntry) => {
             return <BlogEntry blogEntry={blogEntry} />;

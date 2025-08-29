@@ -1,4 +1,5 @@
 import { FaSearch, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import LOGO from "../../public/Logo.png";
 import { NavMenuItem } from "../types/nav";
 
@@ -37,9 +38,9 @@ export const MobileNav = ({ nav, navMenu }: Props) => {
 				{navMenu.map((menu) => {
 					return (
 						<li key={menu.title} className="border-b-2 border-gray-600 relative w-full text-center hover:bg-gray-800">
-							<a className="text-3xl font-sans3 lg:text-[1rem]" href={menu.href}>
+							<Link className="text-3xl font-sans3 lg:text-[1rem]" to={menu.href}>
 								{menu.title}
-							</a>
+							</Link>
 							{menu.dropdown && (
 								<ul className="hidden absolute top-full left-0 bg-gray-800 text-white p-2 rounded shadow-lg">
 									{menu.dropdown.map((item) => (

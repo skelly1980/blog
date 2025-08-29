@@ -4,6 +4,7 @@ import { useState } from "react";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import { ButtonOutline } from "../components/buttons/ButtonOutline";
 import { ButtonSecondary } from "../components/buttons/ButtonSecondary";
+import { Link } from "react-router-dom";
 
 export const About = () => {
   const [accordian, setAccordian] = useState({
@@ -23,7 +24,7 @@ export const About = () => {
 
   return (
     <>
-      <section className="relative bg-[url('/public/shawnbigbrownorig.jpeg'))] bg-cover bg-center w-full bg-size-[auto_30vh] before:content['*'] before:absolute before:top-0 before:left-0 before:bg-black/50 before:blur-2xl before:w-full before:h-full before:z-0">
+      <section className="relative bg-[url('/public/shawnbigbrownorig.jpeg'))] bg-cover bg-center w-full bg-size-[auto_30vh] before:content['*'] before:absolute before:top-0 before:left-0 before:bg-black/50 before:blur-2xl before:w-full before:h-full before:-z-0">
         <div className={`${tailwindStyles.container} relative mx-auto z-50`}>
           <div className="flex justify-start gap-20 items-center h-screen text-white uppercase">
             <div className="flex flex-col p-4 text-center gap-8 max-w-[768px] md:text-left md:items-start">
@@ -33,9 +34,9 @@ export const About = () => {
                 <a href="/blog"></a>learn more
               </button> */}
               <ButtonOutline>
-                <a className="uppercase" href="/blog">
+                <Link className="uppercase" to="/blog">
                   learn more
-                </a>
+                </Link>
               </ButtonOutline>
             </div>
           </div>
@@ -52,14 +53,14 @@ export const About = () => {
             <p className={`${tailwindStyles.paraSpace}`}>Our blog is dedicated to exploring the fascinating worlds of web development, hockey, fly-fishing, and hunting. We aim to provide valuable insights, tips, and stories that resonate with enthusiasts and novices alike.</p>
             <div className={`${tailwindStyles.btnSpace}`}>
               <ButtonOutline>
-                <a className="uppercase" href="#">
+                <Link className="uppercase" to="#">
                   Learn More
-                </a>
+                </Link>
               </ButtonOutline>
               <div className="flex items-center gap-2 group">
-                <a className="uppercase" href="#">
+                <Link className="uppercase" to="#">
                   Join
-                </a>
+                </Link>
                 <MdChevronRight className="group-hover:hidden" />
                 <IoChevronDownOutline className="hidden group-hover:block" />
               </div>
@@ -76,7 +77,7 @@ export const About = () => {
                 <button className="btn-primary">Contact</button>
               </a> */}
               <ButtonOutline>
-                <a href="/contact">Contact</a>
+                <Link to="/contact">Contact</Link>
               </ButtonOutline>
             </div>
             <div className="basis-2/3">
@@ -135,10 +136,10 @@ export const About = () => {
             <p className={`${tailwindStyles.paraSpace}`}>Subscribe to our newsletter for the latest updates on web development, hockey, and outdoor adventures.</p>
             <div className={`${tailwindStyles.btnSpace}`}>
               <ButtonSecondary>
-                <a href="/contact">Subscribe</a>
+                <Link to="/contact">Subscribe</Link>
               </ButtonSecondary>
               <ButtonOutline>
-                <a href="/contact">Follow</a>
+                <Link to="/contact">Follow</Link>
                 </ButtonOutline>
               
             </div>

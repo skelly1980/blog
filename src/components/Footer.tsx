@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import LOGO from "../../public/Logo.png";
 import { getNavMenu } from "../api/nav";
 import { FaSearch, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
@@ -25,18 +26,18 @@ export const Footer = () => {
               <FaSearch className="text-white mr-4" />
             </div>
             <p className="text-white uppercase font-sans3 text-[1rem] font-bold">
-              <a href="#">Subscribe</a>
+              <Link to="#">Subscribe</Link>
             </p>
             <div className="flex items-center justify-center gap-4 lg:ml-12">
-              <a href="#" className="text-white">
+              <Link to="#" className="text-white">
                 <FaFacebook size={24} />
-              </a>
-              <a href="#" className="text-white">
+              </Link>
+              <Link to="#" className="text-white">
                 <FaInstagram size={24} />
-              </a>
-              <a href="#" className="text-white">
+              </Link>
+              <Link to="#" className="text-white">
                 <FaYoutube size={24} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -46,11 +47,11 @@ export const Footer = () => {
           <div className="flex items-center gap-2">
             <ul className="flex items-center gap-4">
               <li>
-                <a href="#">Terms of Service</a>
+                <Link to="#">Terms of Service</Link>
               </li>
               |
               <li>
-                <a href="#">Privacy Policy</a>
+                <Link to="#">Privacy Policy</Link>
               </li>
             </ul>
           </div>
@@ -59,7 +60,7 @@ export const Footer = () => {
               {navMenu.map((menu) => {
                 return (
                   <li key={menu.title}>
-                    <a href={menu.href}>{menu.title}</a>
+                    <Link to={menu.href}>{menu.title}</Link>
                   </li>
                 );
               })}

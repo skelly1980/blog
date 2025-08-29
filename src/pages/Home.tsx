@@ -4,6 +4,7 @@ import Relume from "../../public/Layout/102/Relume.png";
 import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import { ButtonOutline } from "../components/buttons/ButtonOutline";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { blogs } = useBlogsStore();
@@ -86,12 +87,12 @@ export const Home = () => {
                   <p className="pb-8">Stay updated with the latest in web design and development techniques.</p>
                   <div className={`${tailwindStyles.btnSpace} pb-12`}>
                     <ButtonOutline>Learn More</ButtonOutline>
-                    <a className="flex items-center gap-8" href="#">
+                    <Link className="flex items-center gap-8" to="#">
                       Join
                       <span>
                         <MdChevronRight />
                       </span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <img width={684} height={360} src={Placeholder} alt="" />
@@ -135,12 +136,12 @@ export const Home = () => {
                   <small className="pb-2">Hunt</small>
                   <h5 className="pb-1.5">Master the art of Hunting</h5>
                   <p className="pb-6">Learn strategies for successful hunting trips and techniques.</p>
-                  <a className="flex items-center gap-2 pb-16" href="#">
+                  <Link className="flex items-center gap-2 pb-16" to="#">
                     Track
                     <span>
                       <MdChevronRight />
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -150,15 +151,15 @@ export const Home = () => {
                 <h5>Join Our Community of Enthusiasts</h5>
                 <p className="pt-6">Engage with fellow enthusiasts and share your experiences in web development and outdoor activities.</p>
                 <div className={`${tailwindStyles.btnSpace} pt-8`}>
-                  <a className="btn-primary" href="#">
+                  <Link className="btn-primary" to="#">
                     Engage
-                  </a>
-                  <a className="flex items-center gap-4" href="#">
+                  </Link>
+                  <Link className="flex items-center gap-4" to="#">
                     Subscribe{" "}
                     <span>
                       <MdChevronRight />
                     </span>
-                  </a>
+                  </Link>
                 </div>
               </div>
               <img className="pt-11" width={624} height={360} src={Placeholder} alt="" />
@@ -173,12 +174,12 @@ export const Home = () => {
             <p>Get the latest insights on web development and more!</p>
           </div>
           <div className={`${tailwindStyles.btnSpace} pt-6 md:p-0`}>
-            <a className="btn-secondary" href="#">
+            <Link className="btn-secondary" to="#">
               Subscribe
-            </a>
-            <a className="btn-primary" href="#">
+            </Link>
+            <Link className="btn-primary" to="#">
               Learn More
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -198,7 +199,7 @@ export const Home = () => {
                   </div>
                   <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
                   <span className="flex justify-end">
-                    <a href="/blogs">Read more</a>
+                    <Link to="/blogs">Read more</Link>
                   </span>
                 </div>
               ))}
@@ -213,7 +214,7 @@ export const Home = () => {
                   <img width={250} src={blog.img} alt={blog.title} />
                   <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
                   <span className="flex justify-end">
-                    <a href="/blogs">Read more</a>
+                    <Link to="/blogs">Read more</Link>
                   </span>
                 </div>
               ))}

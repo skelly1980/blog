@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getNavMenu } from "../api/nav";
 import LOGO from "../../public/Logo.png";
 import { FaSearch, FaBars } from "react-icons/fa";
@@ -37,16 +38,16 @@ export const Navbar = () => {
           {navMenu.map((menu) => {
               return (
                 <li key={menu.title} className="relative group">
-                  <a className="font-sans3 text-[1rem]" href={menu.href}>
+                  <Link className="font-sans3 text-[1rem]" to={menu.href}>
                     {menu.title}
-                  </a>
+                  </Link>
                   {menu.dropdown && (
-                    <ul className="hidden group-hover:block absolute top-full left-0 bg-gray-800 text-white p-2 rounded shadow-lg">
+                    <ul className="hidden group-hover:block absolute top-full left-0 bg-gray-800 text-white p-2 rounded shadow-lg z-10">
                       {menu.dropdown.map((item) => (
                         <li key={item.title}>
-                          <a href={item.href} className="block px-4 py-2 hover:bg-gray-700">
+                          <Link to={item.href} className="block px-4 py-2 hover:bg-gray-700">
                             {item.title}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>
