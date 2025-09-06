@@ -3,8 +3,8 @@ import { MdChevronRight } from "react-icons/md";
 import Relume from "../../public/Layout/102/Relume.png";
 import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
 import { tailwindStyles } from "../styles/tailwindStyles";
-import { ButtonOutline } from "../components/buttons/ButtonOutline";
 import { Link } from "react-router-dom";
+import { Button } from "../components/buttons/Button";
 
 export const Home = () => {
   const { blogs } = useBlogsStore();
@@ -60,9 +60,9 @@ export const Home = () => {
               <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Connect with fellow enthusiasts and share your adventures.</li>
             </ul>
             <div className={`${tailwindStyles.btnSpace}`}>
-              <ButtonOutline>
+              <Button type="outline">
                 <a className="btn-primary" href="#">Learn More</a>
-              </ButtonOutline>
+              </Button>
               <a href="#">Sign Up</a>
             </div>
           </div>
@@ -86,7 +86,7 @@ export const Home = () => {
                   <h2>Dive into Web Development Trends</h2>
                   <p className="pb-8">Stay updated with the latest in web design and development techniques.</p>
                   <div className={`${tailwindStyles.btnSpace} pb-12`}>
-                    <ButtonOutline>Learn More</ButtonOutline>
+                    <Button type="outline">Learn More</Button>
                     <Link className="flex items-center gap-8" to="#">
                       Join
                       <span>

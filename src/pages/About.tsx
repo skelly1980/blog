@@ -2,9 +2,8 @@ import { MdChevronRight } from "react-icons/md";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { useState } from "react";
 import { tailwindStyles } from "../styles/tailwindStyles";
-import { ButtonOutline } from "../components/buttons/ButtonOutline";
-import { ButtonSecondary } from "../components/buttons/ButtonSecondary";
 import { Link } from "react-router-dom";
+import { Button } from "../components/buttons/Button";
 
 export const About = () => {
   const [accordian, setAccordian] = useState({
@@ -30,14 +29,11 @@ export const About = () => {
             <div className="flex flex-col p-4 text-center gap-8 max-w-[768px] md:text-left md:items-start">
               <h1 className="text-6xl">Welcome to my Blog</h1>
               <p className={`${tailwindStyles.paraSpace}`}>This blog is your go-to resource for insights on web development, hockey, and the great outdoors. Join us as we explore these passions and share valuable tips and stories.</p>
-              {/* <button className="uppercase border-2 px-4 py-2 hover:bg-black/50">
-                <a href="/blog"></a>learn more
-              </button> */}
-              <ButtonOutline>
+              <Button type="outline">
                 <Link className="uppercase" to="/blog">
                   learn more
                 </Link>
-              </ButtonOutline>
+              </Button>
             </div>
           </div>
         </div>
@@ -135,12 +131,12 @@ export const About = () => {
             <h2 className="uppercase">Stay Connected with us</h2>
             <p className={`${tailwindStyles.paraSpace}`}>Subscribe to our newsletter for the latest updates on web development, hockey, and outdoor adventures.</p>
             <div className={`${tailwindStyles.btnSpace}`}>
-              <ButtonSecondary>
+              <Button type="secondary">
                 <Link to="/contact">Subscribe</Link>
-              </ButtonSecondary>
-              <ButtonOutline>
+              </Button>
+              <Button type="outline">
                 <Link to="/contact">Follow</Link>
-                </ButtonOutline>
+                </Button>
               
             </div>
           </div>

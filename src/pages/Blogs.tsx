@@ -7,9 +7,8 @@ import { CreateBlogDialog } from "../components/CreateBlogDialog";
 import { useBlogsStore } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
-import { ButtonOutline } from "../components/buttons/ButtonOutline";
-import { ButtonSecondary } from "../components/buttons/ButtonSecondary";
 import { Link } from "react-router-dom";
+import { Button } from "../components/buttons/Button";
 
 export const Blogs = () => {
   // const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -84,32 +83,32 @@ export const Blogs = () => {
           </div>
         </div>
         <div className="text-center pt-20">
-          <ButtonOutline>
+          <Button type="outline">
             <a href="#">View all</a>
-          </ButtonOutline>
+          </Button>
         </div>
       </section>
       <section className={`${tailwindStyles.container}`}>
         <h2>Stay updated with our Insights</h2>
         <p className="pb-8">Subscribe to our newsletter for the latest posts on web development, hockey, and outdoor adventures.</p>
         <div className={`${tailwindStyles.btnSpace}`}>
-        <ButtonSecondary>
+        <Button type="secondary">
           <Link to="#">Subscribe</Link>
-        </ButtonSecondary>
-        <ButtonOutline>
+        </Button>
+        <Button type="outline">
           <Link to="#">Learn More</Link>
-        </ButtonOutline>
+        </Button>
         </div>
       </section>
       <section className={`${tailwindStyles.container}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
           {blogs.map((blogEntry) => {
-            return <BlogEntry blogEntry={blogEntry} />;
+            return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} />;
           })}
         </div>
-        <button onClick={toggleCreateDialog} className="uppercase text-white bg-red-600 hover:bg-red-600/80 px-3.5 py-2 rounded-sm mb-4" type="submit">
+        <Button onClick={toggleCreateDialog}  type="red">
           Create Blog
-        </button>
+        </Button>
         {showCreateDialog && <CreateBlogDialog handleCreateBlog={handleCreateBlog} toggleCreateDialog={toggleCreateDialog} />}
       </section>
     </>

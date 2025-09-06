@@ -7,6 +7,7 @@ import { MobileNav } from "./MobileNav";
 import { AiOutlineClose } from "react-icons/ai";
 import { NavMenuItem } from "../types/nav";
 import { Signup } from "./Auth/Signup";
+import { Button } from "./buttons/Button";
 
 export const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -65,9 +66,9 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="fixed top-10 right-4 z-40 lg:hidden">
-            <button onClick={handleNav} className="bg-gray-800 p-2 rounded-full">
+            <Button onClick={handleNav} type="grey">
               {nav? <AiOutlineClose className="text-white text-2xl z-10" />:<FaBars className="text-white text-2xl" />}
-            </button>
+            </Button>
           </div>
       </div>
       <MobileNav nav={nav} navMenu={navMenu}  />

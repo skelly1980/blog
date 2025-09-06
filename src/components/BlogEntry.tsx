@@ -5,7 +5,8 @@ type Props = {
 }
 
 export const BlogEntry = (props: Props) => {
-    const {blogEntry} = props;
+  const {blogEntry} = props;
+
   return (
     <div>
       <div>{blogEntry.title}</div>

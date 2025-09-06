@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BlogContent } from "../types/blog";
 import { Dialog } from "./Dialog";
+import { Button } from "./buttons/Button";
 
 type Props = {
   toggleCreateDialog: () => void;
@@ -26,12 +27,12 @@ export const CreateBlogDialog = (props: Props) => {
       <input value={title} onChange={(e) => setTitle(e.target.value)} className="text-white border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" type="text" placeholder="Title" />
       <input value={description} onChange={(e) => setDescription(e.target.value)} className="text-white border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" type="text" placeholder="Description..." />
       <textarea value={content} onChange={(e) => setContent(e.target.value)} className="text-white border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" placeholder="Content" />
-      <button onClick={saveBlog} className="uppercase text-white bg-red-600 hover:bg-red-600/80 w-full py-2 rounded-sm" type="submit">
+      <Button onClick={saveBlog}  type="red">
         Save
-      </button>
-      <button onClick={props.toggleCreateDialog} className="uppercase text-white bg-gray-600 hover:bg-gray-600/80 w-full py-2 rounded-sm" type="submit">
+      </Button>
+      <Button onClick={props.toggleCreateDialog}  type="grey">
         Cancel
-      </button>
+      </Button>
     </Dialog>
   );
 };
