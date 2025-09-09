@@ -5,9 +5,12 @@ import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
+import { useNavigate } from "../hooks/navigate";
 
 export const Home = () => {
   const { blogs } = useBlogsStore();
+  const {goToBlog, goToContact} = useNavigate();
+
   return (
     <>
       <div className="bg-[url(/public/homepage-hero.png)] bg-cover h-[90vh] bg-no-repeat bg-center">
@@ -60,10 +63,10 @@ export const Home = () => {
               <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Connect with fellow enthusiasts and share your adventures.</li>
             </ul>
             <div className={`${tailwindStyles.btnSpace}`}>
-              <Button type="outline">
-                <a className="btn-primary" href="#">Learn More</a>
+              <Button onClick={goToBlog} type="outline">
+                Learn More
               </Button>
-              <a href="#">Sign Up</a>
+              <Link to="/contact">Sign Up</Link>
             </div>
           </div>
           <div className="basis-1/2">
@@ -86,8 +89,8 @@ export const Home = () => {
                   <h2>Dive into Web Development Trends</h2>
                   <p className="pb-8">Stay updated with the latest in web design and development techniques.</p>
                   <div className={`${tailwindStyles.btnSpace} pb-12`}>
-                    <Button type="outline">Learn More</Button>
-                    <Link className="flex items-center gap-8" to="#">
+                    <Button onClick={goToBlog} type="outline">Learn More</Button>
+                    <Link className="flex items-center gap-8" to="/contact">
                       Join
                       <span>
                         <MdChevronRight />
@@ -174,9 +177,9 @@ export const Home = () => {
             <p>Get the latest insights on web development and more!</p>
           </div>
           <div className={`${tailwindStyles.btnSpace} pt-6 md:p-0`}>
-            <Link className="btn-secondary" to="#">
+            <Button onClick={goToContact} type="secondary">
               Subscribe
-            </Link>
+            </Button>
             <Link className="btn-primary" to="#">
               Learn More
             </Link>

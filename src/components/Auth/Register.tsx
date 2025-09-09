@@ -1,3 +1,4 @@
+import { Button } from "../buttons/Button"
 
 
 export const Register = () => {
@@ -9,9 +10,9 @@ export const Register = () => {
                 <input className="border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" type="text" placeholder="Name..." />
                 <input className="border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" type="email" placeholder="Email..." />
                 <input className="border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" type="Password" placeholder="Password..." />
-                <button className="uppercase text-white bg-red-600 hover:bg-red-600/80 w-full py-2 rounded-sm" type="submit">Sign In</button>
+                <Button type="warning">Sign In</Button>
                 <p className="text-white">or</p>
-                <button className="uppercase text-white bg-gray-600 hover:bg-gray-600/80 w-full py-2 rounded-sm" type="submit"><a href="/register" target="_blank">Register</a></button>
+                <Button type="tertiary">Register</Button>
             </div>
         </div>
     </div>

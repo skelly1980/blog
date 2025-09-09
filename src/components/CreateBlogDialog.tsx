@@ -27,10 +27,10 @@ export const CreateBlogDialog = (props: Props) => {
       <input value={title} onChange={(e) => setTitle(e.target.value)} className="text-white border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" type="text" placeholder="Title" />
       <input value={description} onChange={(e) => setDescription(e.target.value)} className="text-white border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" type="text" placeholder="Description..." />
       <textarea value={content} onChange={(e) => setContent(e.target.value)} className="text-white border-2 border-gray-600 w-full rounded-sm placeholder:text-gray-600 p-2" placeholder="Content" />
-      <Button onClick={saveBlog}  type="red">
+      <Button onClick={saveBlog}  type="warning">
         Save
       </Button>
-      <Button onClick={props.toggleCreateDialog}  type="grey">
+      <Button onClick={props.toggleCreateDialog}  type="tertiary">
         Cancel
       </Button>
     </Dialog>
