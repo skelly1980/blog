@@ -19,11 +19,9 @@ export const Signup = (props: Props) => {
           Sign In
         </Button>
         <p className="text-white">or</p>
-        <button className="uppercase text-white bg-gray-600 hover:bg-gray-600/80 w-full py-2 rounded-sm" type="submit">
           <Button type="tertiary">
             Register
           </Button>
-        </button>
       </div>
     </div>
   );

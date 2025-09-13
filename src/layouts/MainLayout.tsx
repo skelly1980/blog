@@ -1,11 +1,10 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Navbar } from '../components/Navbar'
 import { Footer } from '../components/Footer'
 
 type Props = {}
 
-const MainLayout = () => {
+export const MainLayout = () => {
   return (
     <>
       <Navbar />
@@ -14,5 +13,3 @@ const MainLayout = () => {
     </>
   )
 }
-
-export default MainLayout

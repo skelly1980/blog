@@ -7,8 +7,9 @@ import { CreateBlogDialog } from "../components/CreateBlogDialog";
 import { useBlogsStore } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
+import { useNavigate } from "../hooks/navigate";
 
 export const Blogs = () => {
   // const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -122,7 +123,7 @@ export const Blogs = () => {
             return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} />;
           })}
         </div>
-        <Button onClick={toggleCreateDialog} type="red">
+        <Button onClick={toggleCreateDialog} type="warning">
           Create Blog
         </Button>
         {showCreateDialog && <CreateBlogDialog handleCreateBlog={handleCreateBlog} toggleCreateDialog={toggleCreateDialog} />}

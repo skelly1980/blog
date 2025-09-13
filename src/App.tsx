@@ -1,7 +1,7 @@
 import './App.css'
 import "./reset.css";
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
+import { MainLayout } from "./layouts/MainLayout.tsx";
 import { Home } from './pages/Home'
 import { About } from "./pages/About"
 import { Blogs } from './pages/Blogs'
@@ -9,6 +9,7 @@ import { Contact } from './pages/Contact'
 import { Signup } from './components/Auth/Signup'
 import { Register } from './components/Auth/Register';
 import { Redirect } from './pages/Redirect';
+
 
 
 const router = createBrowserRouter(

@@ -66,7 +66,7 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="fixed top-10 right-4 z-40 lg:hidden">
-            <Button onClick={handleNav} type="grey">
+            <Button onClick={handleNav} type="tertiary">
               {nav? <AiOutlineClose className="text-white text-2xl z-10" />:<FaBars className="text-white text-2xl" />}
             </Button>
           </div>
