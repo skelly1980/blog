@@ -4,7 +4,7 @@ import { Dialog } from "./Dialog";
 import { Button } from "./buttons/Button";
 
 type Props = {
-  toggleCreateDialog: () => void;
+  toggleCreateDialog: (event: React.MouseEvent) => void;
   handleCreateBlog: (blog: BlogContent) => void;
 };
 

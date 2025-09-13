@@ -1,7 +1,7 @@
 import { IoCloseCircle } from "react-icons/io5";
 
 type Props = {
-  toggleDialog: () => void;
+  toggleDialog: (event: React.MouseEvent) => void;
   children: React.ReactNode;
 }
 

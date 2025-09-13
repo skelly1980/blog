@@ -3,7 +3,7 @@ import React from "react";
 type Props = {
   children: React.ReactNode;
   type: "outline" | "warning" | "secondary" | "tertiary";
-  onClick?: () => void;
+  onClick?: (event: React.MouseEvent) => void;
 };
 
 const classes = {
