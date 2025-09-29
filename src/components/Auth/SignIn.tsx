@@ -1,10 +1,11 @@
 import { Input } from "../input/input";
 
-export const Register = () => {
+type Props = {};
+
+export const SignIn = (props: Props) => {
   return (
     <>
-      <h3 className="text-white text-4xl">Register</h3>
-      <Input type="primary" placeholder="Name..." />
+      <h3 className="text-white text-4xl">Sign Up</h3>
       <Input type="primary" placeholder="Email..." />
       <Input type="primary" placeholder="Password..." />
     </>

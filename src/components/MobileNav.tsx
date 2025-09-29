@@ -57,7 +57,7 @@ export const MobileNav = ({ nav, navMenu }: Props) => {
 				})}
 			</ul>
 			<div className="flex items-center justify-center gap-4 mt-4">
-				<p className="text-white uppercase font-sans3 text-[1rem] font-bold">
+				<p className="text-white uppercase font-sans3 text-[1rem] font-bold cursor-pointer">
 					<Link to="/contact">Subscribe</Link>
 				</p>
 			</div>

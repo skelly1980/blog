@@ -62,7 +62,7 @@ export const Navbar = () => {
               <input className="placeholder-white px-4" type="Search" placeholder="Search..." />
               <FaSearch className="text-white mr-4" />
             </div>
-            <p className="text-white uppercase font-sans3 text-[1rem] font-bold p-0"><a onClick={toggleSignUp}>Subscribe</a></p>
+            <p className="text-white uppercase font-sans3 text-[1rem] font-bold p-0 cursor-pointer"><a onClick={toggleSignUp}>Subscribe</a></p>
           </div>
         </div>
         <div className="fixed top-10 right-4 z-40 lg:hidden">
