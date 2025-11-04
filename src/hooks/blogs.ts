@@ -26,18 +26,3 @@ export const useBlogsStore = () => {
         createBlog: create
       };
 }
-
-// export const useSetBlogs = () => {
-//   const [blogs, setBlogs] = useState<Blog[]>([]);
-
-//   const getBlogsData = async () => {
-//         const blogs = await getBlogs();
-//         setBlogs(blogs);
-//       }
-    
-//       useEffect(() => {
-//         getBlogsData();
-//       }, []);
-
-//       return setBlogs;
-// };

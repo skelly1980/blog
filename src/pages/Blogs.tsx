@@ -1,33 +1,20 @@
 import { useState } from "react";
 import { BlogEntry } from "../components/BlogEntry";
-// import { createBlog } from "../api/blogs";
 import { MdChevronRight } from "react-icons/md";
 import { BlogContent } from "../types/blog";
 import { CreateBlogDialog } from "../components/CreateBlogDialog";
 import { useBlogsStore } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
-import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
+import Web3 from "../../public/Web3.jpg";
+import Hockey3 from "../../public/Hockey3.jpg";
+import FlyFish3 from "../../public/Fly-Fish-3.jpg";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
 import { useNavigate } from "../hooks/navigate";
 
 export const Blogs = () => {
-  // const [blogs, setBlogs] = useState<Blog[]>([]);
   const [showCreateDialog, setShowCreateDialog] = useState(false);
   const { goToAbout, goToContact } = useNavigate();
-
-  // const goToAbout = () => {
-  //   navigate("/about");
-  // }
-
-  // const getBlogsData = async () => {
-  //   const blogs = await getBlogs();
-  //   setBlogs(blogs);
-  // }
-
-  // useEffect(() => {
-  //   getBlogsData();
-  // }, []);
 
   const { blogs, createBlog } = useBlogsStore();
 
@@ -42,9 +29,9 @@ export const Blogs = () => {
 
   return (
     <>
-      <div className="bg-[url(/public/layout/102/Placeholder-Image.png)] bg-cover h-[90vh] bg-no-repeat bg-center flex flex-col items-center justify-center">
+      <div className="bg-[url('public/Coding.jpg')] bg-cover h-[90vh] bg-no-repeat bg-center flex flex-col items-center justify-center text-white">
         <section className={`${tailwindStyles.container}`}>
-          <div className="text-center">
+          <div className="text-center bg-black/50">
             <h1 style={{ fontSize: "clamp(1rem, 6vw, 4rem)" }} className="uppercase">
               Explore Web Development, Hockey, and Outdoor Adventures
             </h1>
@@ -63,7 +50,7 @@ export const Blogs = () => {
         </div>
         <div className="grid grid-cols-1 place-items-center md:grid-cols-3 md:place-items-stretch gap-6">
           <div>
-            <img width={405} height={270} src={Placeholder} alt="" />
+            <img className="h-[245px]" width={405} height={270} src={Web3} alt="" />
             <div style={{ justifyContent: "flex-start" }} className={`${tailwindStyles.flexBetween} py-6`}>
               <p className="pr-4">Web</p>
               <p>5 min read</p>
@@ -75,7 +62,7 @@ export const Blogs = () => {
             </Link>
           </div>
           <div>
-            <img width={405} height={270} src={Placeholder} alt="" />
+            <img width={405} height={270} src={Hockey3} alt="" />
             <div style={{ justifyContent: "flex-start" }} className={`${tailwindStyles.flexBetween} py-6`}>
               <p className="pr-4">Hockey</p>
               <p>5 min read</p>
@@ -87,7 +74,7 @@ export const Blogs = () => {
             </Link>
           </div>
           <div>
-            <img width={405} height={270} src={Placeholder} alt="" />
+            <img width={405} height={270} src={FlyFish3} alt="" />
             <div style={{ justifyContent: "flex-start" }} className={`${tailwindStyles.flexBetween} py-6`}>
               <p className="pr-4">Fishing</p>
               <p>5 min read</p>
@@ -123,9 +110,11 @@ export const Blogs = () => {
             return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} />;
           })}
         </div>
-        <Button onClick={toggleCreateDialog} type="warning">
-          Create Blog
-        </Button>
+        <div className="w-40">
+          <Button onClick={toggleCreateDialog} type="warning">
+            Create Blog
+          </Button>
+        </div>
         {showCreateDialog && <CreateBlogDialog handleCreateBlog={handleCreateBlog} toggleCreateDialog={toggleCreateDialog} />}
       </section>
     </>

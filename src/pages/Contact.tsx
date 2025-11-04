@@ -1,5 +1,5 @@
 import { tailwindStyles } from "../styles/tailwindStyles";
-import Placehoder from "../../public/Layout/102/Placeholder-Image.png"
+import Hunting3 from "../../public/Hunting3.jpg"
 import { Button } from "../components/buttons/Button";
 
 export const Contact = () => {
@@ -47,7 +47,7 @@ export const Contact = () => {
           </div>
         </div>
         <div className="flex-1">
-          <img src={Placehoder} alt="" />
+          <img src={Hunting3} alt="" />
         </div>
       </div>
     </section>

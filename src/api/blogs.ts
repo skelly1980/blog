@@ -1,12 +1,9 @@
-// import coding from "../../public/blog-coding.png";
-// import flyFishing from "../../public/blog-flyfishing.png";
-// import hockey from "../../public/blog-hockey.png";
 import { Blog, BlogContent } from "../types/blog";
 
 export const createBlog = async (blogContent: BlogContent): Promise<Blog> => {
 	const response = await fetch("http://localhost:3000/api/blogs", 
 		{
-			method: "put", 
+			method: "post", 
 			body: JSON.stringify(blogContent),
 			headers: {
 				"Content-Type": "application/json",

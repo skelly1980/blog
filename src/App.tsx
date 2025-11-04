@@ -20,7 +20,7 @@ const router = createBrowserRouter(
       <Route path="blogs" element={<Blogs />} />
       <Route path="contact" element={<Contact />} />
       <Route path="signup" element={<Signup toggleSignUp={() => {}} />} />
-      <Route path="register" element={<Register />} />
+      <Route path="register" element={<Register onToggleMode={() => {}} />} />
       <Route path="*" element={<Redirect />} />
     </Route>
   )

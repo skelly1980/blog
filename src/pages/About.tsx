@@ -5,6 +5,9 @@ import { tailwindStyles } from "../styles/tailwindStyles";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
 import { useNavigate } from "../hooks/navigate";
+import flyFish2 from "../../public/fly-fish-2.jpg"
+import Deer from "../../public/Deer.jpg"
+
 
 export const About = () => {
   const [accordian, setAccordian] = useState({
@@ -42,7 +45,7 @@ export const About = () => {
       <section className={`${tailwindStyles.container}`}>
         <div className="flex flex-col gap-20 md:flex-row">
           <div className="flex-[1_0_0]">
-            <img width={550} src="https://cdn.vectorstock.com/i/2000v/48/06/image-preview-icon-picture-placeholder-vector-31284806.avif" alt="" />
+            <img width={550} src={flyFish2} alt="" />
           </div>
           <div className="flex flex-col justify-center flex-[1_0_0]">
             <small className="pb-4">Tagline</small>
@@ -136,7 +139,7 @@ export const About = () => {
             </div>
           </div>
           <div>
-            <img width={600} height={400} src="https://cdn.vectorstock.com/i/2000v/48/06/image-preview-icon-picture-placeholder-vector-31284806.avif" alt="" />
+            <img width={600} height={400} src={Deer} alt="" />
           </div>
         </div>
       </section>

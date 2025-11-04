@@ -1,7 +1,11 @@
 import { useBlogsStore } from "../hooks/blogs";
 import { MdChevronRight } from "react-icons/md";
 import Relume from "../../public/Layout/102/Relume.png";
-import Placeholder from "../../public/Layout/102/Placeholder-Image.png";
+import Hockey from "../../public/Hockey.jpg";
+import Hunting from "../../public/Hunting.jpg";
+import Community from "../../public/Community.jpg"
+import FlyFish from "../../public/Fly-Fish.jpg";
+import Web from "../../public/Web-Development.jpg";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
@@ -47,7 +51,7 @@ export const Home = () => {
             </div>
           </div>
           <div>
-            <img width={1280} height={738} src={Placeholder} alt="" />
+            <img width={1280} height={738} src={Hockey} alt="" />
           </div>
         </div>
       </section>
@@ -70,12 +74,12 @@ export const Home = () => {
             </div>
           </div>
           <div className="basis-1/2">
-            <img width={600} height={640} src={Placeholder} alt="" />
+            <img width={600} height={640} src={FlyFish} alt="" />
           </div>
         </div>
       </section>
       <section className={`${tailwindStyles.container}`}>
-        <div className="pt-28 pb-20 text-center">
+        <div className="pb-8 text-center">
           <small>Explore</small>
           <h2>Your Adventure Awaits</h2>
           <p>Discover insights on web development, hockey, and outdoor adventures.</p>
@@ -98,7 +102,7 @@ export const Home = () => {
                     </Link>
                   </div>
                 </div>
-                <img width={684} height={360} src={Placeholder} alt="" />
+                <img width={684} height={360} src={Web} alt="" />
               </div>
             </div>
             <div style={{ alignItems: "stretch" }} className={`${tailwindStyles.flexBetween} my-8 gap-8`}>
@@ -131,8 +135,8 @@ export const Home = () => {
               <div className={`${tailwindStyles.flexBetween} border-2 gap-6`}>
                 <div className="basis-1/2">
                   <picture>
-                    <source media="(min-width: 768px)" srcSet={Placeholder} width="312" height="340" />
-                    <img className="w-full h-[340px] object-cover" src={Placeholder} alt="" width="629" height="340" />
+                    <source media="(min-width: 768px)" srcSet={Hunting} width="312" height="340" />
+                    <img className="w-full h-[340px] object-cover" src={Hunting} alt="" width="629" height="340" />
                   </picture>
                 </div>
                 <div className="basis-1/2 pt-16 px-6">
@@ -165,7 +169,7 @@ export const Home = () => {
                   </Link>
                 </div>
               </div>
-              <img className="pt-11" width={624} height={360} src={Placeholder} alt="" />
+              <img className="pt-11" width={624} height={360} src={Community} alt="" />
             </div>
           </div>
         </div>
