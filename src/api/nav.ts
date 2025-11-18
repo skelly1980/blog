@@ -14,15 +14,15 @@ export const getNavMenu = () => {
             dropdown: [
                 {
                     title: "Coding",
-                    href: "#"
+                    href: "/coding"
                 },
                 {
                     title: "Outdoors",
-                    href: "#"
+                    href: "/outdoors"
                 },
                 {
                     title: "Hockey",
-                    href: "#"
+                    href: "/hockey"
                 },
             ]   
         },

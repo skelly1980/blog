@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { createUser, getUser, signInUser } from '../api/users';
 import { User, CreateUserRequest, SignInRequest, SignInResponse } from "../types/user";
 
-export const usersStore = () => {
+export const useUsersStore = () => {
   const [users, setUser] = useState<User[]>([]);
       
       //Calling backend to get blogs
@@ -20,16 +20,10 @@ export const usersStore = () => {
           setUser([...users, newUser]);
           return newUser;
         }
-  
-        return {
-          users, 
-          createUser: create
-        };
 
         const signIn = async (credentials: SignInRequest): Promise<SignInResponse> => {
           try {
-            const response = await signInUser(credentials);
-            return response;
+            return await signInUser(credentials);
           } catch (error) {
             console.log("Sign in error;", error);
             throw error;

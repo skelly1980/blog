@@ -18,7 +18,7 @@ export const Footer = () => {
         <div className="flex flex-col justify-center items-center lg:flex-row lg:justify-between gap-2 py-4">
           <div className="flex items-center justify-center gap-2">
             <img src={LOGO} width={50} alt="Blog Logo" />
-            <p className="font-sans3 text-7xl md:text-4xl uppercase">Kellydev</p>
+            <p className="font-sans3 text-2xl md:text-4xl uppercase">Kellydev</p>
           </div>
           <div className="flex flex-col items-center gap-4 lg:flex-row">
             <div className="flex items-center justify-between gap-4 border-2 border-gray-600 rounded-[5px] bg-gray-800 py-[.25rem]">

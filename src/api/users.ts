@@ -24,7 +24,8 @@ export const getUser = async (): Promise<User[]> => {
 };
 
 export const signInUser = async (signInRequest: SignInRequest): Promise<SignInResponse> => {
-    const response = await fetch("http://localhost:3000/api/users/signin", 
+    try {
+        const response = await fetch("http://localhost:3000/api/users/signin", 
         {
             method: "POST", 
             body: JSON.stringify(signInRequest),
@@ -34,9 +35,18 @@ export const signInUser = async (signInRequest: SignInRequest): Promise<SignInRe
         }
     );
 
+    if (!response.ok) {
+      const errBody = await response.json().catch(() => null);
+      const message = errBody?.message ?? `Request failed: ${response.status}`;
+      throw new Error(message);
+    }
+
     const data = await response.json();
-    console.log(data);
-    return data;
+    return data as SignInResponse;
+  } catch (error) {
+    console.error('Error signing in user:', error);
+    throw error;
+  }
 }
 
 

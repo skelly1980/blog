@@ -3,7 +3,7 @@ import { BlogEntry } from "../components/BlogEntry";
 import { MdChevronRight } from "react-icons/md";
 import { BlogContent } from "../types/blog";
 import { CreateBlogDialog } from "../components/CreateBlogDialog";
-import { useBlogsStore } from "../hooks/blogs";
+import { useBlogsStore, useGetBlogs } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import Web3 from "../../public/Web3.jpg";
 import Hockey3 from "../../public/Hockey3.jpg";
@@ -16,15 +16,25 @@ export const Blogs = () => {
   const [showCreateDialog, setShowCreateDialog] = useState(false);
   const { goToAbout, goToContact } = useNavigate();
 
-  const { blogs, createBlog } = useBlogsStore();
+  const { createBlog, removeBlog } = useBlogsStore();
+  const blogsQuery = useGetBlogs();
+  const blogs = blogsQuery.data ?? [];
 
   const toggleCreateDialog = () => {
     setShowCreateDialog(!showCreateDialog);
   };
 
   const handleCreateBlog = (blog: BlogContent) => {
-    createBlog(blog);
-    toggleCreateDialog();
+    (async () => {
+      await createBlog(blog);
+      await blogsQuery.refetch();
+      toggleCreateDialog();
+    })();
+  };
+
+  const handleRemove = async (id: string) => {
+    await removeBlog(id);
+    await blogsQuery.refetch();
   };
 
   return (
@@ -107,7 +117,7 @@ export const Blogs = () => {
       <section id="blogs" className={`${tailwindStyles.container}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
           {blogs.map((blogEntry) => {
-            return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} />;
+            return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} removeBlog={handleRemove} />;
           })}
         </div>
         <div className="w-40">

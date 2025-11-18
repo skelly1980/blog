@@ -30,7 +30,7 @@ export const About = () => {
   return (
     <>
       <section className="relative bg-[url('/public/shawnbigbrownorig.jpeg'))] bg-cover bg-center w-full bg-size-[auto_30vh] before:content['*'] before:absolute before:top-0 before:left-0 before:bg-black/50 before:blur-2xl before:w-full before:h-full before:-z-0">
-        <div className={`${tailwindStyles.container} relative mx-auto z-50`}>
+        <div className={`${tailwindStyles.container} relative mx-auto z-20`}>
           <div className="flex justify-start gap-20 items-center h-screen text-white uppercase">
             <div className="flex flex-col p-4 text-center gap-8 max-w-[768px] md:text-left md:items-start">
               <h1 className="text-6xl">Welcome to my Blog</h1>
@@ -77,45 +77,45 @@ export const About = () => {
           </div>
           <div className="basis-2/3">
             <div>
-              <div onClick={() => handleAccordian("item1")} className={`${tailwindStyles.flexBetween} cursor-pointer`}>
+              <div onClick={() => handleAccordian("item1")} className="flex items-center justify-between cursor-pointer">
                 <h3 className="uppercase">What is this blog?</h3>
-                {accordian.item1 ? <IoChevronDownOutline /> : <MdChevronRight />}
+                {accordian.item1 ? <IoChevronDownOutline size={30}  /> : <MdChevronRight size={30} />}
               </div>
               <div className={accordian.item1 ? "block pb-6" : "hidden"}>
                 <p className={`${tailwindStyles.paraSpace}`}>This blog explores web development, hockey, and fly-fishing. We aim to share insights, tips, and personal experiences. Whether you're a beginner or an expert, there's something for everyone.</p>
               </div>
             </div>
             <div>
-              <div onClick={() => handleAccordian("item2")} className={`${tailwindStyles.flexBetween} cursor-pointer`}>
+              <div onClick={() => handleAccordian("item2")} className="flex items-center justify-between cursor-pointer">
                 <h3 className="uppercase">Who writes the content?</h3>
-                {accordian.item2 ? <IoChevronDownOutline /> : <MdChevronRight />}
+                {accordian.item2 ? <IoChevronDownOutline size={30} /> : <MdChevronRight size={30} />}
               </div>
               <div className={accordian.item2 ? "block pb-6" : "hidden"}>
                 <p className={`${tailwindStyles.paraSpace}`}>This blog explores web development, hockey, and fly-fishing. We aim to share insights, tips, and personal experiences. Whether you're a beginner or an expert, there's something for everyone.</p>
               </div>
             </div>
             <div>
-              <div onClick={() => handleAccordian("item3")} className={`${tailwindStyles.flexBetween} cursor-pointer`}>
+              <div onClick={() => handleAccordian("item3")} className="flex items-center justify-between cursor-pointer">
                 <h3 className="uppercase">How often is it updated?</h3>
-                {accordian.item3 ? <IoChevronDownOutline /> : <MdChevronRight />}
+                {accordian.item3 ? <IoChevronDownOutline size={30}  /> : <MdChevronRight size={30}  />}
               </div>
               <div className={accordian.item3 ? "block pb-6" : "hidden"}>
                 <p className={`${tailwindStyles.paraSpace}`}>This blog explores web development, hockey, and fly-fishing. We aim to share insights, tips, and personal experiences. Whether you're a beginner or an expert, there's something for everyone.</p>
               </div>
             </div>
             <div>
-              <div onClick={() => handleAccordian("item4")} className={`${tailwindStyles.flexBetween} cursor-pointer`}>
+              <div onClick={() => handleAccordian("item4")} className="flex items-center justify-between cursor-pointer">
                 <h3 className="uppercase">Can I contribute?</h3>
-                {accordian.item4 ? <IoChevronDownOutline /> : <MdChevronRight />}
+                {accordian.item4 ? <IoChevronDownOutline size={30}  /> : <MdChevronRight size={30}  />}
               </div>
               <div className={accordian.item4 ? "block pb-6" : "hidden"}>
                 <p className={`${tailwindStyles.paraSpace}`}>This blog explores web development, hockey, and fly-fishing. We aim to share insights, tips, and personal experiences. Whether you're a beginner or an expert, there's something for everyone.</p>
               </div>
             </div>
             <div>
-              <div onClick={() => handleAccordian("item5")} className={`${tailwindStyles.flexBetween} cursor-pointer`}>
+              <div onClick={() => handleAccordian("item5")} className="flex items-center justify-between cursor-pointer">
                 <h3 className="uppercase">How to contact us?</h3>
-                {accordian.item5 ? <IoChevronDownOutline /> : <MdChevronRight />}
+                {accordian.item5 ? <IoChevronDownOutline size={30}  /> : <MdChevronRight size={30}  />}
               </div>
               <div className={accordian.item5 ? "block pb-6" : "hidden"}>
                 <p className={`${tailwindStyles.paraSpace}`}>This blog explores web development, hockey, and fly-fishing. We aim to share insights, tips, and personal experiences. Whether you're a beginner or an expert, there's something for everyone.</p>

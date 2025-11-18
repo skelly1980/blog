@@ -29,7 +29,7 @@ export const Navbar = () => {
   }, []);
   return (
     <>
-      <div className="bg-black relative">
+      <div className="bg-[var(--color-black)] sticky inset-0 z-60 md:relative">
         <div className="container mx-auto lg:flex items-center justify-between p-8">
           <div className="text-white uppercase text-3xl flex items-center gap-2">
             <img src={LOGO} width={50} alt="Blog Logo" />
@@ -43,10 +43,10 @@ export const Navbar = () => {
                     {menu.title}
                   </Link>
                   {menu.dropdown && (
-                    <ul className="hidden group-hover:block absolute top-full left-0 bg-gray-800 text-white p-2 rounded shadow-lg z-10">
+                    <ul className="hidden group-hover:block absolute top-full left-0 bg-gray-800 text-white rounded shadow-lg z-10">
                       {menu.dropdown.map((item) => (
-                        <li key={item.title}>
-                          <Link to={item.href} className="block px-4 py-2 hover:bg-gray-700">
+                        <li className="hover:bg-gray-700" key={item.title}>
+                          <Link to={item.href} className="block px-4 py-2">
                             {item.title}
                           </Link>
                         </li>
@@ -66,7 +66,7 @@ export const Navbar = () => {
           </div>
         </div>
         <div className="fixed top-10 right-4 z-40 lg:hidden">
-            <Button onClick={handleNav} type="tertiary">
+            <Button onClick={handleNav} type="mobile">
               {nav? <AiOutlineClose className="text-white text-2xl z-10" />:<FaBars className="text-white text-2xl" />}
             </Button>
           </div>

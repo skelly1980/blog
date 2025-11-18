@@ -3,14 +3,14 @@ import { useState } from "react";
 import { Register } from "./Register";
 import { SignIn } from "./SignIn";
 import { CreateUserRequest, SignInRequest } from "../../types/user";
-import { usersStore } from "../../hooks/users";
+import { useUsersStore } from "../../hooks/users";
 
 type Props = {
   toggleSignUp: (event: React.MouseEvent) => void;
 };
 export const Signup = (props: Props) => {
   const [mode, setMode] = useState<"Sign In" | "Register">("Sign In");
-  const { createUser, signIn } = usersStore();
+  const { createUser, signIn } = useUsersStore();
 
   const handleSetMode = () => {
     setMode(mode === "Sign In" ? "Register" : "Sign In")
@@ -21,8 +21,6 @@ export const Signup = (props: Props) => {
       const response = await signIn(credentials);
       if (response.success) {
         console.log("User signed in:", response.user);
-        // Could show a success message or close dialog
-        // props.toggleSignUp(); // Optionally close the dialog
       }
     }
   }

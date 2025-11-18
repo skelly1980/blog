@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../buttons/Button";
 import { Input } from "../input/input";
-import { CreateUserRequest, SignInRequest } from "../../types/user";
+import { SignInRequest } from "../../types/user";
 
 type Props = {
   onToggleMode: () => void;
@@ -61,10 +61,10 @@ export const SignIn = ({ onToggleMode, signInUser }: Props) => {
     try {
       await signInUser({ email, password });
       setSuccessMessage("Sign in successful!");
-      // Clear form
       setEmail("");
       setPassword("");
-    } catch (err) {
+
+    } catch {
       setError("Sign in failed. Please check your credentials.");
     } finally {
       setLoading(false);
@@ -90,7 +90,7 @@ export const SignIn = ({ onToggleMode, signInUser }: Props) => {
         onChange={(e) => setPassword(e.target.value)}
         inputType="password"
       />
-      <Button onClick={handleSignIn} type="warning" disabled={loading}>
+      <Button onClick={handleSignIn} type="warning">
         {loading ? "Signing In..." : "Sign In"}
       </Button>
       <p className="text-white normal-case">

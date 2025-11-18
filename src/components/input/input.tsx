@@ -1,12 +1,11 @@
-import React from 'react'
+import type { ChangeEvent } from 'react'
 
 type Props = {
-    children?: React.ReactNode;
-    type: "primary";
-    placeholder?: string;
-    value?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    inputType?: "text" | "email" | "password";
+  type: "primary";
+  placeholder?: string;
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  inputType?: "text" | "email" | "password";
 }
 
 const classes = {
@@ -14,7 +13,7 @@ const classes = {
 }
 
 export const Input = (props: Props) => {
-    const { children, type, placeholder, value, onChange, inputType = "text" } = props;
+    const { type, placeholder, value, onChange, inputType = "text" } = props;
     const style = classes[type]
 
   return (
