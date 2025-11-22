@@ -35,16 +35,7 @@ export const useBlogsStore = () => {
   };
 
   const removeBlog = async (id: string) => {
-    try {
-      await apiDeleteBlog(id);
-      setBlogs((prev) => {
-        const next = prev.filter((b) => b.id !== Number(id));
-        return next;
-      });
-    } catch (err) {
-      console.error("Failed to delete blog", err);
-      throw err;
-    }
+    await apiDeleteBlog(id);
   };
 
   return {

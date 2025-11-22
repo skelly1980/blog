@@ -28,7 +28,7 @@ export const getBlogs = async (): Promise<Blog[]> => {
 };
 
 export const deleteBlog = async (id: string): Promise<void> => {
-  const res = await fetch(`http://localhost:3000/api/blogs/${encodeURIComponent(id)}`, {
+  const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
     method: 'DELETE',
   });
 
@@ -36,7 +36,5 @@ export const deleteBlog = async (id: string): Promise<void> => {
     const err = await res.json().catch(() => ({ message: res.statusText }));
     throw new Error(err.message ?? `Delete failed: ${res.status}`);
   }
-
-  // If server returns a body, ignore it; success is enough
   return;
 };
