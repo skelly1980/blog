@@ -1,11 +1,11 @@
 import { useBlogsStore } from "../hooks/blogs";
 import { MdChevronRight } from "react-icons/md";
-import Relume from "../../public/Layout/102/Relume.png";
-import Hockey from "../../public/Hockey.jpg";
-import Hunting from "../../public/Hunting.jpg";
-import Community from "../../public/Community.jpg"
-import FlyFish from "../../public/Fly-Fish.jpg";
-import Web from "../../public/Web-Development.jpg";
+import Relume from "../public/Layout/102/Relume.png";
+import Hockey from "../public/Hockey.jpg";
+import Hunting from "../public/Hunting.jpg";
+import Community from "../public/Community.jpg"
+import FlyFish from "../public/Fly-Fish.jpg";
+import Web from "../public/Web-Development.jpg";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
@@ -17,7 +17,7 @@ export const Home = () => {
 
   return (
     <>
-      <div className="bg-[url(/public/homepage-hero.png)] bg-cover h-[90vh] bg-no-repeat bg-center">
+      <div className="bg-[url(src/public/homepage-hero.png)] bg-cover h-[90vh] bg-no-repeat bg-center">
         <div className="tailwindStyles.container mx-auto flex items-center justify-center h-full z-20">
           <div className="relative after:content-['*'] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-black after:blur-2xl p-12">
             <div className="relative z-20 text-white text-center">
@@ -62,9 +62,9 @@ export const Home = () => {
             <h2>Discover the Thrills of Fly-Fishing and Hunting</h2>
             <p className="pb-8">Our blog dives deep into the art of fly-fishing and the excitement of hunting. Join us as we share tips, techniques, and stories that celebrate these outdoor passions.</p>
             <ul className="pb-8">
-              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Learn essential fly-fishing techniques for every angler.</li>
-              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Explore the best hunting spots and strategies.</li>
-              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Connect with fellow enthusiasts and share your adventures.</li>
+              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(../public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Learn essential fly-fishing techniques for every angler.</li>
+              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(../public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Explore the best hunting spots and strategies.</li>
+              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(../public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Connect with fellow enthusiasts and share your adventures.</li>
             </ul>
             <div className={`${tailwindStyles.btnSpace}`}>
               <Button onClick={goToBlog} type="outline">

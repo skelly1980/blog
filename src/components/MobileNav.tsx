@@ -1,6 +1,6 @@
 import { FaSearch, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import LOGO from "../../public/Logo.png";
+import LOGO from "../public/Logo.png";
 import { NavMenuItem } from "../types/nav";
 
 type Props = {

@@ -5,8 +5,8 @@ import { tailwindStyles } from "../styles/tailwindStyles";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
 import { useNavigate } from "../hooks/navigate";
-import flyFish2 from "../../public/fly-fish-2.jpg"
-import Deer from "../../public/Deer.jpg"
+import flyFish2 from "../public/fly-fish-2.jpg"
+import Deer from "../public/Deer.jpg"
 
 
 export const About = () => {
@@ -29,7 +29,7 @@ export const About = () => {
 
   return (
     <>
-      <section className="relative bg-[url('/public/shawnbigbrownorig.jpeg'))] bg-cover bg-center w-full bg-size-[auto_30vh] before:content['*'] before:absolute before:top-0 before:left-0 before:bg-black/50 before:blur-2xl before:w-full before:h-full before:-z-0">
+      <section className="relative bg-[url('src/public/shawnbigbrownorig.jpeg'))] bg-cover bg-center w-full bg-size-[auto_30vh] before:content['*'] before:absolute before:top-0 before:left-0 before:bg-black/50 before:blur-2xl before:w-full before:h-full before:-z-0">
         <div className={`${tailwindStyles.container} relative mx-auto z-20`}>
           <div className="flex justify-start gap-20 items-center h-screen text-white uppercase">
             <div className="flex flex-col p-4 text-center gap-8 max-w-[768px] md:text-left md:items-start">

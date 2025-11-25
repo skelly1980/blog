@@ -8,7 +8,7 @@ import { MdChevronRight } from "react-icons/md";
 export const Coding = () => {
   return (
     <>
-      <section className='flex h-[50vh] w-full flex-col justify-center bg-[url("public/pexels-harold-vasquez-853421-2653362.jpg")]'>
+      <section className='flex h-[50vh] w-full flex-col justify-center bg-[url("../public/pexels-harold-vasquez-853421-2653362.jpg")]'>
         <div className={`${tailwindStyles.container}`}>
           <div className="max-w-[768px] text-center text-[var(--color-white)]">
             <Banner
@@ -92,7 +92,7 @@ export const Coding = () => {
               <div>
                 <div className="pb-8">
                   <Card
-                    url="../../public/Layout/102/Relume.png"
+                    url="../public/Layout/102/Relume.png"
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -109,7 +109,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../../public/Layout/102/Relume.png"
+                    url="../public/Layout/102/Relume.png"
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -125,7 +125,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../../public/Layout/102/Relume.png"
+                    url="../public/Layout/102/Relume.png"
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -143,7 +143,7 @@ export const Coding = () => {
               <div>
                 <div className="pb-8">
                   <Card
-                    url="../../public/Layout/102/Relume.png"
+                    url="../public/Layout/102/Relume.png"
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -159,7 +159,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../../public/Layout/102/Relume.png"
+                    url="../public/Layout/102/Relume.png"
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -175,7 +175,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../../public/Layout/102/Relume.png"
+                    url="../public/Layout/102/Relume.png"
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -210,7 +210,7 @@ export const Coding = () => {
               <div>
                 <Card
                   flex="flex gap-4 pb-8"
-                  url="../../public/Layout/102/Relume.png"
+                  url="../public/Layout/102/Relume.png"
                   classes="pb-4"
                   alt="Relume"
                   width={48}
@@ -221,7 +221,7 @@ export const Coding = () => {
                 />
                 <Card
                   flex="flex gap-4 pb-8"
-                  url="../../public/Layout/102/Relume.png"
+                  url="../public/Layout/102/Relume.png"
                   classes="pb-4"
                   alt="Relume"
                   width={48}
@@ -232,7 +232,7 @@ export const Coding = () => {
                 />
                 <Card
                   flex="flex gap-4"
-                  url="../../public/Layout/102/Relume.png"
+                  url="../public/Layout/102/Relume.png"
                   classes="pb-4"
                   alt="Relume"
                   width={48}

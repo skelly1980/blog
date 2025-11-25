@@ -1,6 +1,8 @@
 import { Blog } from "../types/blog";
 import { Button } from "./buttons/Button";
 import { useState } from "react";
+import UpdatedBlogDialog from "./UpdatedBlogDialog";
+
 
 type Props = {
   blogEntry: Blog;
@@ -10,6 +12,18 @@ type Props = {
 export const BlogEntry = (props: Props) => {
   const { blogEntry, removeBlog } = props;
   const [isDeleting, setIsDeleting] = useState(false);
+  const [showUpdateDialog, setShowUpdateDialog] = useState(false);
+
+  const toggleUpdateDialog = () => {
+    setShowUpdateDialog(!showUpdateDialog);
+  };
+
+  const handleUpdate = (id: number, updates: { title: string; description: string; content: string }) => {
+    // Call your update API here
+    console.log('Updating blog', id, updates);
+    // After successful update, close dialog and refetch
+    toggleUpdateDialog();
+  };
 
   const handleDeleteClick = async () => {
     setIsDeleting(true);
@@ -29,9 +43,16 @@ export const BlogEntry = (props: Props) => {
         <Button onClick={handleDeleteClick} type="warning">
           {isDeleting ? 'Deleting…' : 'Delete'}
         </Button>
-        <Button type="warning">
+        <Button onClick={toggleUpdateDialog} type="warning">
           Update
         </Button>
+        {showUpdateDialog && (
+          <UpdatedBlogDialog
+          blog={blogEntry}
+          onUpdate={handleUpdate}
+          onClose={toggleUpdateDialog}
+          />
+        )}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { tailwindStyles } from "../styles/tailwindStyles";
-import Hunting3 from "../../public/Hunting3.jpg"
+import Hunting3 from "../public/Hunting3.jpg"
 import { Button } from "../components/buttons/Button";
 
 export const Contact = () => {

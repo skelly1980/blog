@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getNavMenu } from "../api/nav";
-import LOGO from "../../public/Logo.png";
+import LOGO from "../public/Logo.png";
 import { FaSearch, FaBars } from "react-icons/fa";
 import { MobileNav } from "./MobileNav";
 import { AiOutlineClose } from "react-icons/ai";
@@ -31,9 +31,9 @@ export const Navbar = () => {
     <>
       <div className="bg-[var(--color-black)] sticky inset-0 z-60 md:relative">
         <div className="container mx-auto lg:flex items-center justify-between p-8">
-          <div className="text-white uppercase text-3xl flex items-center gap-2">
-            <img src={LOGO} width={50} alt="Blog Logo" />
-            <h3 className="pb-[0!important] font-sans3 text-7xl md:text-4xl">KellyDEV</h3>
+          <div className="text-white uppercase text-3xl">
+            <Link className="flex items-center gap-2" to="/home"><img src={LOGO} width={50} alt="Blog Logo" />
+            <h3 className="pb-[0!important] font-sans3 text-7xl md:text-4xl">KellyDEV</h3></Link>
           </div>
           <ul className="hidden lg:flex items-center justify-between gap-4 uppercase text-white font-bold">
           {navMenu.map((menu) => {

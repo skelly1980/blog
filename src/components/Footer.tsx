@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import LOGO from "../../public/Logo.png";
+import LOGO from "../public/Logo.png";
 import { getNavMenu } from "../api/nav";
 import { FaSearch, FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
 import { NavMenuItem } from "../types/nav";
