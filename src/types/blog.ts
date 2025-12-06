@@ -6,7 +6,7 @@ export type BlogContent = {
 }
 
 export type Blog = BlogContent & {
-    id: string;
+    id: number;
     tags?: string[];
     date: string;
   }

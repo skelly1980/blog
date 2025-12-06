@@ -37,6 +37,10 @@ export const Blogs = () => {
     await blogsQuery.refetch();
   };
 
+  const handleRefetch = async () => {
+    await blogsQuery.refetch();
+  };
+
   return (
     <>
       <div className="bg-[url('src/public/Coding.jpg')] bg-cover h-[90vh] bg-no-repeat bg-center flex flex-col items-center justify-center text-white">
@@ -117,7 +121,7 @@ export const Blogs = () => {
       <section id="blogs" className={`${tailwindStyles.container}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
           {blogs.map((blogEntry) => {
-            return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} removeBlog={handleRemove} />;
+            return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} removeBlog={handleRemove} refetchBlogs={handleRefetch} />;
           })}
         </div>
         <div className="w-40">

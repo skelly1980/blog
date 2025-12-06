@@ -27,6 +27,20 @@ export const getBlogs = async (): Promise<Blog[]> => {
   return res.json() as Promise<Blog[]>;
 };
 
+export const updateBlog = async (blog: Blog): Promise<Blog> => {
+  const res = await fetch(`http://localhost:3000/api/blogs/${blog.id}`, {
+    method: "PATCH",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify(blog),
+  });
+
+  if(!res.ok) {
+    const err = await res.json().catch(() => ({message: res.statusText}));
+    throw new Error(err.message?? `Update failed: ${res.status}`);
+  }
+  return res.json() as Promise<Blog>;
+}
+
 export const deleteBlog = async (id: string): Promise<void> => {
   const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
     method: 'DELETE',

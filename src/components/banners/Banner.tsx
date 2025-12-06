@@ -1,6 +1,6 @@
 
 type Props = {
-  small: string;
+  small?: string;
   title: string;
   description: string;
 };

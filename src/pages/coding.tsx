@@ -4,11 +4,14 @@ import { Button } from "../components/buttons/Button";
 import Card from "../components/cards/Card";
 import { Link } from "react-router-dom";
 import { MdChevronRight } from "react-icons/md";
+import Placeholder from "../public/Layout/102/Placeholder-Image.png";
+import Relume from "../public/Layout/102/Relume.png";
+import { IoStarSharp } from "react-icons/io5";
 
 export const Coding = () => {
   return (
     <>
-      <section className='flex h-[50vh] w-full flex-col justify-center bg-[url("../public/pexels-harold-vasquez-853421-2653362.jpg")]'>
+      <section className='flex h-[50vh] w-full flex-col justify-center bg-[url("src/public/pexels-harold-vasquez-853421-2653362.jpg")]'>
         <div className={`${tailwindStyles.container}`}>
           <div className="max-w-[768px] text-center text-[var(--color-white)]">
             <Banner
@@ -18,8 +21,8 @@ export const Coding = () => {
             />
           </div>
           <div className={`${tailwindStyles.btnSpace} justify-center pt-8`}>
-            <Button type="secondary">Start</Button>
-            <Button type="outline">Learn</Button>
+            <Button type="secondary" color="outlineBlack">Start</Button>
+            <Button type="outline" color="outlineWhite">Learn</Button>
           </div>
         </div>
       </section>
@@ -37,7 +40,7 @@ export const Coding = () => {
           <div className={`${tailwindStyles.flexLarge}`}>
             <div className="text-center">
               <Card
-                url="public/Layout/102/Placeholder-Image.png"
+                url={Placeholder}
                 alt="Placeholder"
                 title="Interactive tutorials"
                 titleStyles="pb-6 h3 uppercase font-bold"
@@ -50,7 +53,7 @@ export const Coding = () => {
             </div>
             <div className="text-center">
               <Card
-                url="public/Layout/102/Placeholder-Image.png"
+                url={Placeholder}
                 alt="Placeholder"
                 title="Community support"
                 titleStyles="pb-6 h3"
@@ -63,7 +66,7 @@ export const Coding = () => {
             </div>
             <div className="text-center">
               <Card
-                url="public/Layout/102/Placeholder-Image.png"
+                url={Placeholder}
                 alt="Placeholder"
                 title="Flexible learning paths"
                 titleStyles="pb-6 h3"
@@ -79,8 +82,8 @@ export const Coding = () => {
             className={`${tailwindStyles.container} flex flex-col items-center justify-center`}
           >
             <div className={`${tailwindStyles.btnSpace}`}>
-              <Button type="outline">Explore</Button>
-              <Button type="outline">Start</Button>
+              <Button type="secondary">Explore</Button>
+              <Button type="secondary">Start</Button>
             </div>
           </div>
         </div>
@@ -92,7 +95,7 @@ export const Coding = () => {
               <div>
                 <div className="pb-8">
                   <Card
-                    url="../public/Layout/102/Relume.png"
+                    url={Relume}
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -109,7 +112,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../public/Layout/102/Relume.png"
+                    url={Relume}
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -125,7 +128,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../public/Layout/102/Relume.png"
+                    url={Relume}
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -143,7 +146,7 @@ export const Coding = () => {
               <div>
                 <div className="pb-8">
                   <Card
-                    url="../public/Layout/102/Relume.png"
+                    url={Relume}
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -159,7 +162,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../public/Layout/102/Relume.png"
+                    url={Relume}
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -175,7 +178,7 @@ export const Coding = () => {
                 </div>
                 <div className="pb-8">
                   <Card
-                    url="../public/Layout/102/Relume.png"
+                    url={Relume}
                     classes="pb-4"
                     alt="Relume"
                     width={28}
@@ -193,11 +196,11 @@ export const Coding = () => {
             </div>
             <div className="flex-1">
               <img
-                className="w-[335px] h-[348px] md:h-[640px] md:w-[600px] object-cover"
+                className="h-[348px] w-[335px] object-cover md:h-[640px] md:w-[600px]"
                 width={600}
                 height={640}
-                src="../../public/Layout/102/Placeholder-Image.png"
-                alt=""
+                src={Placeholder}
+                alt="Placeholder"
               />
             </div>
           </div>
@@ -210,7 +213,7 @@ export const Coding = () => {
               <div>
                 <Card
                   flex="flex gap-4 pb-8"
-                  url="../public/Layout/102/Relume.png"
+                  url={Relume}
                   classes="pb-4"
                   alt="Relume"
                   width={48}
@@ -221,7 +224,7 @@ export const Coding = () => {
                 />
                 <Card
                   flex="flex gap-4 pb-8"
-                  url="../public/Layout/102/Relume.png"
+                  url={Relume}
                   classes="pb-4"
                   alt="Relume"
                   width={48}
@@ -232,7 +235,7 @@ export const Coding = () => {
                 />
                 <Card
                   flex="flex gap-4"
-                  url="../public/Layout/102/Relume.png"
+                  url={Relume}
                   classes="pb-4"
                   alt="Relume"
                   width={48}
@@ -244,12 +247,68 @@ export const Coding = () => {
               </div>
               <div className="flex gap-4 pt-8">
                 <Button type="secondary">Explore</Button>
-                <Link className="flex items-center gap-2" to="#">Start<MdChevronRight /></Link>  
+                <Link className="flex items-center gap-2" to="#">
+                  Start
+                  <MdChevronRight />
+                </Link>
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <img width={600} height={640} src="../../public/Layout/102/Placeholder-Image.png" alt="Placeholder" />
+              <img
+                width={600}
+                height={640}
+                src={Placeholder}
+                alt="Placeholder"
+              />
             </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className={`${tailwindStyles.container}`}>
+          <div className={`${tailwindStyles.flexReversed} gap-20`}>
+            <div className="flex-1">
+              <iframe className="w-full h-[315px]"
+                src="https://www.youtube.com/embed/giXuiotopO0?si=fF6abLSVMXDLt-Zg"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div className="flex-1">
+              <div className="flex pb-4">
+                <IoStarSharp />
+                <IoStarSharp />
+                <IoStarSharp />
+                <IoStarSharp />
+                <IoStarSharp />
+              </div>
+              <p className="pb-4">
+                "Learning to code transformed my career from a dead-end job to a
+                dynamic tech path. The resources here cut through the noise and
+                gave me practical skills that actually matter."
+              </p>
+              <div className="flex gap-5">
+                <div>
+                  <p>Michael Rodriguez</p>
+                  <p>Senior Software Engineer</p>
+                </div>
+                <p className="border-l-2 pl-5">Webflow</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className={`${tailwindStyles.container}`}>
+          <Banner 
+          title="Start your coding journey now"
+          description="Learn practical skills that transform careers and unlock opportunities in the tech world"/>
+          <div className={`${tailwindStyles.btnSpace}`}>
+            <Button type="secondary" color="outlineBlack">Enroll</Button>
+            <Button type="outline" color="outlineBlack">Explore</Button>
           </div>
         </div>
       </section>

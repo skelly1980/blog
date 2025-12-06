@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { createBlog, getBlogs } from "../api/blogs";
+import { createBlog, getBlogs, updateBlog } from "../api/blogs";
 import { Blog, BlogContent } from "../types/blog";
 import { useQuery } from "@tanstack/react-query";
 import { deleteBlog as apiDeleteBlog } from "../api/blogs";
@@ -34,6 +34,14 @@ export const useBlogsStore = () => {
     return newBlog;
   };
 
+  const update = async (
+    blog: Blog
+  ) => {
+    const updatedBlog = await updateBlog(blog);
+    setBlogs((prev) => prev.map((b) => (b.id === blog.id ? updatedBlog:b)));
+    return updatedBlog
+  }
+
   const removeBlog = async (id: string) => {
     await apiDeleteBlog(id);
   };
@@ -42,5 +50,6 @@ export const useBlogsStore = () => {
     blogs,
     removeBlog,
     createBlog: create,
+    updateBlog: update,
   };
 };

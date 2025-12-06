@@ -5,7 +5,7 @@ import { Blog } from "../types/blog";
 
 type Props = {
   blog: Blog;
-  onUpdate: (id: number, updates: { title: string; description: string; content: string }) => void;
+  onUpdate: (blog: Blog) => void;
   onClose: () => void;
   toggleUpdateDialog: (event: React.MouseEvent) => void;
 };
@@ -13,10 +13,10 @@ type Props = {
 const UpdatedBlogDialog = ({ blog, onUpdate, onClose }: Props) => {
   const [title, setTitle] = useState(blog.title);
   const [description, setDescription] = useState(blog.description);
-  const [content, setContent] = useState(blog.content);
+  const [content, setContent] = useState<string>(blog.content);
 
   const handleSave = () => {
-    onUpdate(blog.id, { title, description, content });
+    onUpdate({...blog, title, description, content });
   };
   return (
     <>
@@ -42,7 +42,7 @@ const UpdatedBlogDialog = ({ blog, onUpdate, onClose }: Props) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
       />
-      <Button onClick={handleSave} type="warning">
+      <Button onClick={handleSave} type="warning" color="red">
         Save
       </Button>
     </Dialog>
