@@ -21,8 +21,8 @@ export const Coding = () => {
             />
           </div>
           <div className={`${tailwindStyles.btnSpace} justify-center pt-8`}>
-            <Button type="secondary" color="outlineBlack">Start</Button>
-            <Button type="outline" color="outlineWhite">Learn</Button>
+            <Button type="outline">Start</Button>
+            <Button type="outline">Learn</Button>
           </div>
         </div>
       </section>

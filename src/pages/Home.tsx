@@ -67,7 +67,7 @@ export const Home = () => {
               <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(../public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Connect with fellow enthusiasts and share your adventures.</li>
             </ul>
             <div className={`${tailwindStyles.btnSpace}`}>
-              <Button onClick={goToBlog} type="outline">
+              <Button onClick={goToBlog} type="secondary">
                 Learn More
               </Button>
               <Link to="/contact">Sign Up</Link>

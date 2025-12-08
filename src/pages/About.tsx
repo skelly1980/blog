@@ -52,7 +52,7 @@ export const About = () => {
             <h2 className="text-4xl pb-4 uppercase">Discover Our Passion for Diverse Topics</h2>
             <p className={`${tailwindStyles.paraSpace}`}>Our blog is dedicated to exploring the fascinating worlds of web development, hockey, fly-fishing, and hunting. We aim to provide valuable insights, tips, and stories that resonate with enthusiasts and novices alike.</p>
             <div className={`${tailwindStyles.btnSpace}`}>
-              <Button onClick={goToBlog} type="outline">
+              <Button onClick={goToBlog} type="secondary">
                 Learn More
               </Button>
               <div className="flex items-center gap-2 group">
@@ -133,7 +133,7 @@ export const About = () => {
               <Button onClick={goToContact} type="secondary">
                 Subscribe
               </Button>
-              <Button onClick={goToContact} type="outline">
+              <Button onClick={goToContact} type="secondary">
                 Follow
               </Button>
             </div>

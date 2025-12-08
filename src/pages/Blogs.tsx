@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BlogEntry } from "../components/BlogEntry";
 import { MdChevronRight } from "react-icons/md";
 import { BlogContent } from "../types/blog";
-import { CreateBlogDialog } from "../components/CreateBlogDialog";
+import { CreateorUpdateBlogDialog } from "../components/CreateorUpdateBlogDialog";
 import { useBlogsStore, useGetBlogs } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import Web3 from "../public/Web3.jpg";
@@ -24,12 +24,10 @@ export const Blogs = () => {
     setShowCreateDialog(!showCreateDialog);
   };
 
-  const handleCreateBlog = (blog: BlogContent) => {
-    (async () => {
-      await createBlog(blog);
-      await blogsQuery.refetch();
-      toggleCreateDialog();
-    })();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const handleCreateBlog = async (data: BlogContent, _id?: number) => {
+    await createBlog(data);
+    await blogsQuery.refetch();
   };
 
   const handleRemove = async (id: string) => {
@@ -113,7 +111,7 @@ export const Blogs = () => {
           <Button onClick={goToContact} type="secondary">
             Subscribe
           </Button>
-          <Button onClick={goToAbout} type="outline">
+          <Button onClick={goToAbout} type="secondary">
             Learn More
           </Button>
         </div>
@@ -125,11 +123,18 @@ export const Blogs = () => {
           })}
         </div>
         <div className="w-40">
-          <Button onClick={toggleCreateDialog} type="warning">
-            Create Blog
-          </Button>
-        </div>
-        {showCreateDialog && <CreateBlogDialog handleCreateBlog={handleCreateBlog} toggleCreateDialog={toggleCreateDialog} />}
+        <Button onClick={toggleCreateDialog} type="warning">
+          Create Blog
+        </Button>
+      </div>
+      
+      {showCreateDialog && (
+        <CreateorUpdateBlogDialog
+            mode="create"
+            onSave={handleCreateBlog}
+            onClose={toggleCreateDialog}
+        />
+      )}
       </section>
     </>
   );

@@ -1,9 +1,10 @@
+// src/components/BlogEntry.tsx
 import { Blog } from "../types/blog";
 import { Button } from "./buttons/Button";
 import { useState } from "react";
-import UpdatedBlogDialog from "./UpdatedBlogDialog";
+import { CreateorUpdateBlogDialog } from "./CreateorUpdateBlogDialog"; // Changed import
 import { useBlogsStore } from "../hooks/blogs";
-
+import { BlogContent } from "../types/blog";
 
 type Props = {
   blogEntry: Blog;
@@ -16,16 +17,23 @@ export const BlogEntry = (props: Props) => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [showUpdateDialog, setShowUpdateDialog] = useState(false);
 
+  const { updateBlog } = useBlogsStore();
+
   const toggleUpdateDialog = () => {
     setShowUpdateDialog(!showUpdateDialog);
   };
 
-  const { updateBlog } = useBlogsStore();
-
-  const handleUpdate = async (blog: Blog) => {
-    await updateBlog(blog);
-    await refetchBlogs();
-    toggleUpdateDialog();
+  const handleUpdate = async (data: BlogContent, id?: number) => {
+    if (id) {
+      const updatedBlog: Blog = { 
+        ...blogEntry, 
+        ...data, 
+        id,
+        date: blogEntry.date // Keep original date
+      };
+      await updateBlog(updatedBlog);
+      await refetchBlogs();
+    }
   };
 
   const handleDeleteClick = async () => {
@@ -33,7 +41,7 @@ export const BlogEntry = (props: Props) => {
     try {
       await removeBlog(blogEntry.id.toString());
     } finally {
-    setIsDeleting(false);
+      setIsDeleting(false);
     }
   };
 
@@ -43,18 +51,18 @@ export const BlogEntry = (props: Props) => {
       <img width={450} src={blogEntry.img} alt={blogEntry.title} />
       <div>{blogEntry.content}</div>
       <div className="flex gap-4 w-40 py-2">
-        <Button onClick={handleDeleteClick} type="warning" color="red">
+        <Button onClick={handleDeleteClick} type="warning">
           {isDeleting ? 'Deleting…' : 'Delete'}
         </Button>
-        <Button onClick={toggleUpdateDialog} type="warning" color="red">
+        <Button onClick={toggleUpdateDialog} type="warning">
           Update
         </Button>
         {showUpdateDialog && (
-          <UpdatedBlogDialog
-          blog={blogEntry}
-          onUpdate={handleUpdate}
-          onClose={toggleUpdateDialog}
-          toggleUpdateDialog={toggleUpdateDialog}
+          <CreateorUpdateBlogDialog
+            mode="update"
+            blog={blogEntry}
+            onSave={handleUpdate}
+            onClose={toggleUpdateDialog}
           />
         )}
       </div>
