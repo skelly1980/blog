@@ -24,9 +24,8 @@ export const Blogs = () => {
     setShowCreateDialog(!showCreateDialog);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleCreateBlog = async (data: BlogContent, _id?: number) => {
-    await createBlog(data);
+  const handleCreateBlog = async (data: BlogContent, _id?: string, imageFile?: File | null) => {
+    await createBlog(data, imageFile);
     await blogsQuery.refetch();
   };
 

@@ -1,18 +1,32 @@
 import { Blog, BlogContent } from "../types/blog";
 
-export const createBlog = async (blogContent: BlogContent): Promise<Blog> => {
-  const res = await fetch('http://localhost:3000/api/blogs', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(blogContent),
-  });
+export const createBlog = async (blogContent: BlogContent, imageFile?: File | null): Promise<Blog> => {
+  let res;
+  
+  if (imageFile) {
+    // Send as FormData if there's an image
+    const formData = new FormData();
+    formData.append('image', imageFile);
+    formData.append('blogData', JSON.stringify(blogContent));
+    
+    res = await fetch('http://localhost:3000/api/blogs', {
+      method: 'POST',
+      body: formData,
+    });
+  } else {
+    // Send as JSON if no image
+    res = await fetch('http://localhost:3000/api/blogs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(blogContent),
+    });
+  }
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({ message: res.statusText }));
     throw new Error(err.message ?? `Create failed: ${res.status}`);
   }
 
-  // assume server returns the created Blog as JSON
   return res.json() as Promise<Blog>;
 };
 
@@ -27,12 +41,27 @@ export const getBlogs = async (): Promise<Blog[]> => {
   return res.json() as Promise<Blog[]>;
 };
 
-export const updateBlog = async (blog: Blog): Promise<Blog> => {
-  const res = await fetch(`http://localhost:3000/api/blogs/${blog.id}`, {
-    method: "PATCH",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(blog),
-  });
+export const updateBlog = async (blog: Blog, imageFile?: File | null): Promise<Blog> => {
+  let res;
+  
+  if (imageFile) {
+    // Send as FormData if there's an image
+    const formData = new FormData();
+    formData.append('image', imageFile);
+    formData.append('blogData', JSON.stringify(blog));
+    
+    res = await fetch(`http://localhost:3000/api/blogs/${blog.id}`, {
+      method: "PATCH",
+      body: formData,
+    });
+  } else {
+    // Send as JSON if no image
+    res = await fetch(`http://localhost:3000/api/blogs/${blog.id}`, {
+      method: "PATCH",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(blog),
+    });
+  }
 
   if(!res.ok) {
     const err = await res.json().catch(() => ({message: res.statusText}));

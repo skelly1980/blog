@@ -2,7 +2,7 @@
 import { Blog } from "../types/blog";
 import { Button } from "./buttons/Button";
 import { useState } from "react";
-import { CreateorUpdateBlogDialog } from "./CreateorUpdateBlogDialog"; // Changed import
+import { CreateorUpdateBlogDialog } from "./CreateorUpdateBlogDialog"; 
 import { useBlogsStore } from "../hooks/blogs";
 import { BlogContent } from "../types/blog";
 
@@ -23,15 +23,15 @@ export const BlogEntry = (props: Props) => {
     setShowUpdateDialog(!showUpdateDialog);
   };
 
-  const handleUpdate = async (data: BlogContent, id?: number) => {
+  const handleUpdate = async (data: BlogContent, id?: string, imageFile?: File | null) => {
     if (id) {
       const updatedBlog: Blog = { 
         ...blogEntry, 
         ...data, 
         id,
-        date: blogEntry.date // Keep original date
+        date: blogEntry.date 
       };
-      await updateBlog(updatedBlog);
+      await updateBlog(updatedBlog, imageFile);
       await refetchBlogs();
     }
   };
@@ -48,7 +48,7 @@ export const BlogEntry = (props: Props) => {
   return (
     <div>
       <div>{blogEntry.title}</div>
-      <img width={450} src={blogEntry.img} alt={blogEntry.title} />
+      {blogEntry.img && <img width={450} src={blogEntry.img} alt={blogEntry.title} />}
       <div>{blogEntry.content}</div>
       <div className="flex gap-4 w-40 py-2">
         <Button onClick={handleDeleteClick} type="warning">
