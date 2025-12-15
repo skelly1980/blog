@@ -4,5 +4,5 @@ export const tailwindStyles = {
   flexLarge: "flex flex-col xl:flex-row md:items-center md:justify-between",
   flexReversed: "flex flex-col-reverse md:flex-row md:items-center md:justify-between",
   paraSpace: "pb-6",
-  btnSpace: "flex flex-row gap-8 items-center",
+  btnSpace: "flex flex-row gap-8 items-center pt-4",
 };

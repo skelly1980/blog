@@ -32,7 +32,7 @@ export const Navbar = () => {
       <div className="bg-[var(--color-black)] sticky inset-0 z-60 md:relative">
         <div className="container mx-auto lg:flex items-center justify-between p-8">
           <div className="text-white uppercase text-3xl">
-            <Link className="flex items-center gap-2" to="/home"><img src={LOGO} width={50} alt="Blog Logo" />
+            <Link className="flex items-center gap-2" to="/"><img src={LOGO} width={50} alt="Blog Logo" />
             <h3 className="pb-[0!important] font-sans3 text-7xl md:text-4xl">KellyDEV</h3></Link>
           </div>
           <ul className="hidden lg:flex items-center justify-between gap-4 uppercase text-white font-bold">

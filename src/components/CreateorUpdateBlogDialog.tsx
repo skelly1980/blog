@@ -44,11 +44,17 @@ export const CreateorUpdateBlogDialog = ({
   }, [blog]);
 
   const handleSave = () => {
+    console.log('Description state:', description);
+    console.log('Title state:', title);
+    console.log('Content state:', content);
+    
     const blogData: BlogContent = {
       title,
       description,
       content,
     };
+
+    console.log('Blog data being sent:', blogData);
 
     if (mode === "update" && blog) {
       onSave(blogData, blog.id, imageFile);
@@ -79,6 +85,7 @@ export const CreateorUpdateBlogDialog = ({
         placeholder="Description..."
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        style={{ color: 'white' }}
       />
       <input
         type="file"
@@ -94,7 +101,7 @@ export const CreateorUpdateBlogDialog = ({
         onChange={(e) => setContent(e.target.value)}
       />
       {imagePreview && (
-        <img src={imagePreview} alt="Preview" className="mt-2 max-w-xs" />
+        <img src={imagePreview} alt="Preview" className="mt-2 w-1/2" />
       )}
       <Button onClick={handleSave} type="warning">
         {mode === "create" ? "Create" : "Save"}

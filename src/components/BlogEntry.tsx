@@ -22,7 +22,7 @@ export const BlogEntry = (props: Props) => {
   const toggleUpdateDialog = () => {
     setShowUpdateDialog(!showUpdateDialog);
   };
-
+ 
   const handleUpdate = async (data: BlogContent, id?: string, imageFile?: File | null) => {
     if (id) {
       const updatedBlog: Blog = { 
@@ -48,7 +48,8 @@ export const BlogEntry = (props: Props) => {
   return (
     <div>
       <div>{blogEntry.title}</div>
-      {blogEntry.img && <img width={450} src={blogEntry.img} alt={blogEntry.title} />}
+      <div>{blogEntry.description}</div>
+      {blogEntry.img && blogEntry.img.trim() && <img width={450} src={blogEntry.img} alt={blogEntry.title} />}
       <div>{blogEntry.content}</div>
       <div className="flex gap-4 w-40 py-2">
         <Button onClick={handleDeleteClick} type="warning">

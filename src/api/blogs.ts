@@ -1,26 +1,19 @@
 import { Blog, BlogContent } from "../types/blog";
 
 export const createBlog = async (blogContent: BlogContent, imageFile?: File | null): Promise<Blog> => {
-  let res;
+  // Always send as FormData
+  const formData = new FormData();
   
   if (imageFile) {
-    // Send as FormData if there's an image
-    const formData = new FormData();
     formData.append('image', imageFile);
-    formData.append('blogData', JSON.stringify(blogContent));
-    
-    res = await fetch('http://localhost:3000/api/blogs', {
-      method: 'POST',
-      body: formData,
-    });
-  } else {
-    // Send as JSON if no image
-    res = await fetch('http://localhost:3000/api/blogs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(blogContent),
-    });
   }
+  
+  formData.append('blogData', JSON.stringify(blogContent));
+  
+  const res = await fetch('http://localhost:3000/api/blogs', {
+    method: 'POST',
+    body: formData,
+  });
 
   if (!res.ok) {
     const err = await res.json().catch(() => ({ message: res.statusText }));
@@ -42,26 +35,19 @@ export const getBlogs = async (): Promise<Blog[]> => {
 };
 
 export const updateBlog = async (blog: Blog, imageFile?: File | null): Promise<Blog> => {
-  let res;
+  // Always send as FormData
+  const formData = new FormData();
   
   if (imageFile) {
-    // Send as FormData if there's an image
-    const formData = new FormData();
     formData.append('image', imageFile);
-    formData.append('blogData', JSON.stringify(blog));
-    
-    res = await fetch(`http://localhost:3000/api/blogs/${blog.id}`, {
-      method: "PATCH",
-      body: formData,
-    });
-  } else {
-    // Send as JSON if no image
-    res = await fetch(`http://localhost:3000/api/blogs/${blog.id}`, {
-      method: "PATCH",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(blog),
-    });
   }
+  
+  formData.append('blogData', JSON.stringify(blog));
+  
+  const res = await fetch(`http://localhost:3000/api/blogs/${blog.id}`, {
+    method: "PATCH",
+    body: formData,
+  });
 
   if(!res.ok) {
     const err = await res.json().catch(() => ({message: res.statusText}));
