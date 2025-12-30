@@ -1,4 +1,3 @@
-// src/components/BlogEntry.tsx
 import { Blog } from "../types/blog";
 import { Button } from "./buttons/Button";
 import { useState } from "react";
@@ -47,10 +46,10 @@ export const BlogEntry = (props: Props) => {
 
   return (
     <div>
-      <div>{blogEntry.title}</div>
-      <div>{blogEntry.description}</div>
+      <h4>{blogEntry.title}</h4>
+      <div className="py-4">{blogEntry.description}</div>
       {blogEntry.img && blogEntry.img.trim() && <img width={450} src={blogEntry.img} alt={blogEntry.title} />}
-      <div>{blogEntry.content}</div>
+      <div className="pt-4">{blogEntry.content}</div>
       <div className="flex gap-4 w-40 py-2">
         <Button onClick={handleDeleteClick} type="warning">
           {isDeleting ? 'Deleting…' : 'Delete'}

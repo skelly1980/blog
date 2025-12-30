@@ -1,26 +1,30 @@
+import { ReactNode } from "react";
+
 type Props = {
   flex?: string;
-  url: string;
-  alt: string;
+  url?: string;
+  icon?: ReactNode;
+  alt?: string;
   title: string;
   description: string;
   width?: number;
   height?: number;
   classes?: string;
-  titleStyles: string;
+  titleStyles?: string;
   padding?: string;
 };
 
-const Card = ({ flex, url, alt, title, description, width, height, classes, titleStyles, padding }: Props) => {
+const Card = ({ flex, url, icon, alt, title, description, width, height, classes, titleStyles, padding }: Props) => {
   return (
     <div className={flex}>
-      <img
+      {icon && <div className="mb-4">{icon}</div>}
+      {url && <img
         className={classes}
         src={url}
         alt={alt}
         width={width}
         height={height}
-      />
+      />}
       <div className={padding}>
         <p className={titleStyles}>{title}</p>
         <p>{description}</p>

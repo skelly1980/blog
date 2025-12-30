@@ -11,14 +11,17 @@ import FlyFish3 from "../public/Fly-Fish-3.jpg";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
 import { useNavigate } from "../hooks/navigate";
+import { Loader } from "../components/Loader";
 
 export const Blogs = () => {
   const [showCreateDialog, setShowCreateDialog] = useState(false);
   const { goToAbout, goToContact } = useNavigate();
 
   const { createBlog, removeBlog } = useBlogsStore();
-  const blogsQuery = useGetBlogs();
-  const blogs = blogsQuery.data ?? [];
+  const {data, isLoading, isError, refetch} = useGetBlogs();
+  console.log("isLoading", isLoading);
+  console.log("isError", isError);
+  const blogs = data ?? [];
 
   const toggleCreateDialog = () => {
     setShowCreateDialog(!showCreateDialog);
@@ -26,20 +29,30 @@ export const Blogs = () => {
 
   const handleCreateBlog = async (data: BlogContent, _id?: string, imageFile?: File | null) => {
     await createBlog(data, imageFile);
-    await blogsQuery.refetch();
+    await refetch();
   };
 
   const handleRemove = async (id: string) => {
     await removeBlog(id);
-    await blogsQuery.refetch();
+    await refetch();
   };
 
   const handleRefetch = async () => {
-    await blogsQuery.refetch();
+    await refetch();
   };
+
+  // if (isLoading) {
+  //   return (
+  //     <div>...loading</div>
+  //   )
+  // }
 
   return (
     <>
+    {isLoading && <Loader />}
+    {/* <div className="relative">
+      <Loader />
+    </div> */}
       <div className="bg-[url('src/public/Coding.jpg')] bg-cover h-[90vh] bg-no-repeat bg-center flex flex-col items-center justify-center text-white">
         <section className={`${tailwindStyles.container}`}>
           <div className="text-center bg-black/50">
@@ -98,7 +111,7 @@ export const Blogs = () => {
           </div>
         </div>
         <div className="text-center pt-20">
-          <Button type="outline">
+          <Button type="secondary">
             <Link to="#blogs">View all</Link>
           </Button>
         </div>
