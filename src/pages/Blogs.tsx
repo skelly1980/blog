@@ -3,7 +3,7 @@ import { BlogEntry } from "../components/BlogEntry";
 import { MdChevronRight } from "react-icons/md";
 import { BlogContent } from "../types/blog";
 import { CreateorUpdateBlogDialog } from "../components/CreateorUpdateBlogDialog";
-import { useBlogsStore, useGetBlogs } from "../hooks/blogs";
+import { useBlogsStore, useCreateBlog, useGetBlogs } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import Web3 from "../public/Web3.jpg";
 import Hockey3 from "../public/Hockey3.jpg";
@@ -17,10 +17,10 @@ export const Blogs = () => {
   const [showCreateDialog, setShowCreateDialog] = useState(false);
   const { goToAbout, goToContact } = useNavigate();
 
-  const { createBlog, removeBlog } = useBlogsStore();
-  const {data, isLoading, isError, refetch} = useGetBlogs();
-  console.log("isLoading", isLoading);
-  console.log("isError", isError);
+  const { removeBlog } = useBlogsStore();
+  const {data, isLoading, refetch} = useGetBlogs();
+  const createBlog = useCreateBlog();
+
   const blogs = data ?? [];
 
   const toggleCreateDialog = () => {
@@ -28,7 +28,7 @@ export const Blogs = () => {
   };
 
   const handleCreateBlog = async (data: BlogContent, _id?: string, imageFile?: File | null) => {
-    await createBlog(data, imageFile);
+    createBlog.mutate({blog: data, imageFile});
     await refetch();
   };
 
@@ -50,9 +50,6 @@ export const Blogs = () => {
   return (
     <>
     {isLoading && <Loader />}
-    {/* <div className="relative">
-      <Loader />
-    </div> */}
       <div className="bg-[url('src/public/Coding.jpg')] bg-cover h-[90vh] bg-no-repeat bg-center flex flex-col items-center justify-center text-white">
         <section className={`${tailwindStyles.container}`}>
           <div className="text-center bg-black/50">

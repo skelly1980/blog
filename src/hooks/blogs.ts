@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createBlog, getBlogs, updateBlog } from "../api/blogs";
 import { Blog, BlogContent } from "../types/blog";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { deleteBlog as apiDeleteBlog } from "../api/blogs";
 
 export const useGetBlogs = () => {
@@ -14,6 +14,19 @@ export const useGetBlogs = () => {
     refetchOnWindowFocus: false,
   });
 };
+
+type CreateBlogObject = {
+  blog: BlogContent;
+  imageFile?: File | null;
+}
+
+export const useCreateBlog = () => {
+  return useMutation({
+    mutationFn: async (createBlogObject: CreateBlogObject) => {
+      return await createBlog(createBlogObject.blog, createBlogObject.imageFile)
+    },
+  })
+}
 
 export const useBlogsStore = () => {
   const [blogs, setBlogs] = useState<Blog[]>([]);

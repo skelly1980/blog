@@ -6,9 +6,7 @@ const override: CSSProperties = {
   borderColor: "red",
 };
 
-type Props = {};
-
-export const Loader = (props: Props) => {
+export const Loader = () => {
   const [loading,] = useState(true);
   const [color, setColor] = useState("");
   return (

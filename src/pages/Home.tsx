@@ -1,4 +1,4 @@
-import { useBlogsStore } from "../hooks/blogs";
+import { useGetBlogs } from "../hooks/blogs";
 import { MdChevronRight } from "react-icons/md";
 import Relume from "../public/Layout/102/Relume.png";
 import Hockey from "../public/Hockey.jpg";
@@ -10,13 +10,18 @@ import { tailwindStyles } from "../styles/tailwindStyles";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
 import { useNavigate } from "../hooks/navigate";
+import { Loader } from "../components/Loader";
 
 export const Home = () => {
-  const { blogs } = useBlogsStore();
+  const { data, isLoading } = useGetBlogs();
+
+  const blogs = data ?? [];
+
   const {goToBlog, goToContact} = useNavigate();
 
   return (
     <>
+    {isLoading && <Loader />}
       <div className="bg-[url(src/public/homepage-hero.png)] bg-cover h-[90vh] bg-no-repeat bg-center">
         <div className="tailwindStyles.container mx-auto flex items-center justify-center h-full z-20">
           <div className="relative after:content-['*'] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-black after:blur-2xl p-12">
