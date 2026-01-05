@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { createBlog, getBlogs, updateBlog } from "../api/blogs";
 import { Blog, BlogContent } from "../types/blog";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteBlog as apiDeleteBlog } from "../api/blogs";
 
 export const useGetBlogs = () => {
@@ -20,50 +19,85 @@ type CreateBlogObject = {
   imageFile?: File | null;
 }
 
+type UpdateBlogObject = {
+  blog: Blog;
+  imageFile?: File | null;
+}
+
+
 export const useCreateBlog = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (createBlogObject: CreateBlogObject) => {
       return await createBlog(createBlogObject.blog, createBlogObject.imageFile)
     },
+    onSuccess: () => {
+      // This tells React Query to refetch blogs automatically
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+    }
   })
 }
 
-export const useBlogsStore = () => {
-  const [blogs, setBlogs] = useState<Blog[]>([]);
+export const useUpdateBlog = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (updatedBlogObject: UpdateBlogObject) => {
+      return await updateBlog(updatedBlogObject.blog, updatedBlogObject.imageFile)
+    },
+     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+    }
+  })
+}
 
-  //Calling backend to get blogs
-  const getBlogsData = async () => {
-    const blogs = await getBlogs();
-    setBlogs(blogs);
-  };
+export const useRemoveBlog = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      return await apiDeleteBlog(id);
+    },
+     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+    }
+  })
+}
 
-  useEffect(() => {
-    getBlogsData();
-  }, []);
+// export const useBlogsStore = () => {
+//   const [blogs, setBlogs] = useState<Blog[]>([]);
 
-  const create = async (blog: BlogContent, imageFile?: File | null) => {
-    const newBlog = await createBlog(blog, imageFile);
-    setBlogs((prev) => [...prev, newBlog]);
-    return newBlog;
-  };
+//   //Calling backend to get blogs
+//   const getBlogsData = async () => {
+//     const blogs = await getBlogs();
+//     setBlogs(blogs);
+//   };
 
-  const update = async (
-    blog: Blog,
-    imageFile?: File | null
-  ) => {
-    const updatedBlog = await updateBlog(blog, imageFile);
-    setBlogs((prev) => prev.map((b) => (b.id === blog.id ? updatedBlog:b)));
-    return updatedBlog
-  }
+//   useEffect(() => {
+//     getBlogsData();
+//   }, []);
 
-  const removeBlog = async (id: string) => {
-    await apiDeleteBlog(id);
-  };
+//   const create = async (blog: BlogContent, imageFile?: File | null) => {
+//     const newBlog = await createBlog(blog, imageFile);
+//     setBlogs((prev) => [...prev, newBlog]);
+//     return newBlog;
+//   };
 
-  return {
-    blogs,
-    removeBlog,
-    createBlog: create,
-    updateBlog: update,
-  };
-};
+//   const update = async (
+//     blog: Blog,
+//     imageFile?: File | null
+//   ) => {
+//     const updatedBlog = await updateBlog(blog, imageFile);
+//     setBlogs((prev) => prev.map((b) => (b.id === blog.id ? updatedBlog:b)));
+//     return updatedBlog
+//   }
+
+//   const removeBlog = async (id: string) => {
+//     await apiDeleteBlog(id);
+//   };
+
+//   return {
+//     blogs,
+//     removeBlog,
+//     createBlog: create,
+//     updateBlog: update,
+//   };
+// };

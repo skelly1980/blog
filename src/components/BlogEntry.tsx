@@ -2,21 +2,21 @@ import { Blog } from "../types/blog";
 import { Button } from "./buttons/Button";
 import { useState } from "react";
 import { CreateorUpdateBlogDialog } from "./CreateorUpdateBlogDialog"; 
-import { useBlogsStore } from "../hooks/blogs";
+import { useUpdateBlog } from "../hooks/blogs";
 import { BlogContent } from "../types/blog";
 
 type Props = {
   blogEntry: Blog;
   removeBlog: (id: string) => Promise<void>;
-  refetchBlogs: () => Promise<void>;
 };
 
 export const BlogEntry = (props: Props) => {
-  const { blogEntry, removeBlog, refetchBlogs } = props;
+  const { blogEntry, removeBlog } = props;
   const [isDeleting, setIsDeleting] = useState(false);
   const [showUpdateDialog, setShowUpdateDialog] = useState(false);
 
-  const { updateBlog } = useBlogsStore();
+  // const { updateBlog } = useBlogsStore();
+  const updateBlog = useUpdateBlog();
 
   const toggleUpdateDialog = () => {
     setShowUpdateDialog(!showUpdateDialog);
@@ -30,8 +30,7 @@ export const BlogEntry = (props: Props) => {
         id,
         date: blogEntry.date 
       };
-      await updateBlog(updatedBlog, imageFile);
-      await refetchBlogs();
+      updateBlog.mutate({blog: updatedBlog, imageFile});
     }
   };
 

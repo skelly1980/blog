@@ -3,7 +3,7 @@ import { BlogEntry } from "../components/BlogEntry";
 import { MdChevronRight } from "react-icons/md";
 import { BlogContent } from "../types/blog";
 import { CreateorUpdateBlogDialog } from "../components/CreateorUpdateBlogDialog";
-import { useBlogsStore, useCreateBlog, useGetBlogs } from "../hooks/blogs";
+import { useBlogsStore, useCreateBlog, useGetBlogs, useRemoveBlog } from "../hooks/blogs";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import Web3 from "../public/Web3.jpg";
 import Hockey3 from "../public/Hockey3.jpg";
@@ -17,8 +17,8 @@ export const Blogs = () => {
   const [showCreateDialog, setShowCreateDialog] = useState(false);
   const { goToAbout, goToContact } = useNavigate();
 
-  const { removeBlog } = useBlogsStore();
-  const {data, isLoading, refetch} = useGetBlogs();
+  const removeBlog = useRemoveBlog();
+  const {data, isLoading} = useGetBlogs();
   const createBlog = useCreateBlog();
 
   const blogs = data ?? [];
@@ -28,24 +28,12 @@ export const Blogs = () => {
   };
 
   const handleCreateBlog = async (data: BlogContent, _id?: string, imageFile?: File | null) => {
-    createBlog.mutate({blog: data, imageFile});
-    await refetch();
+    createBlog.mutate({blog: data, imageFile}); 
   };
 
   const handleRemove = async (id: string) => {
-    await removeBlog(id);
-    await refetch();
+    removeBlog.mutate(id); 
   };
-
-  const handleRefetch = async () => {
-    await refetch();
-  };
-
-  // if (isLoading) {
-  //   return (
-  //     <div>...loading</div>
-  //   )
-  // }
 
   return (
     <>
@@ -128,7 +116,7 @@ export const Blogs = () => {
       <section id="blogs" className={`${tailwindStyles.container}`}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-4">
           {blogs.map((blogEntry) => {
-            return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} removeBlog={handleRemove} refetchBlogs={handleRefetch} />;
+            return <BlogEntry key={blogEntry.id} blogEntry={blogEntry} removeBlog={handleRemove} />;
           })}
         </div>
         <div className="w-40">
