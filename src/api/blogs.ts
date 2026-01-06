@@ -34,6 +34,17 @@ export const getBlogs = async (): Promise<Blog[]> => {
   return res.json() as Promise<Blog[]>;
 };
 
+export const getBlogsById = async (id: string): Promise<Blog> => {
+  const res = await fetch(`http://localhost:3000/api/blogs/${id}`);
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ message: res.statusText }));
+    throw new Error(err.message ?? `getBlogById failed: ${res.status}`)
+  }
+
+  return res.json() as Promise<Blog>;
+};
+
 export const updateBlog = async (blog: Blog, imageFile?: File | null): Promise<Blog> => {
   // Always send as FormData
   const formData = new FormData();

@@ -6,6 +6,7 @@ import Hunting from "../public/Hunting.jpg";
 import Community from "../public/Community.jpg"
 import FlyFish from "../public/Fly-Fish.jpg";
 import Web from "../public/Web-Development.jpg";
+import HomepageHero from "../public/homepage-hero.png";
 import { tailwindStyles } from "../styles/tailwindStyles";
 import { Link } from "react-router-dom";
 import { Button } from "../components/buttons/Button";
@@ -22,7 +23,7 @@ export const Home = () => {
   return (
     <>
     {isLoading && <Loader />}
-      <div className="bg-[url(src/public/homepage-hero.png)] bg-cover h-[90vh] bg-no-repeat bg-center">
+      <div style={{ backgroundImage: `url(${HomepageHero})` }} className="bg-cover h-[90vh] bg-no-repeat bg-center">
         <div className="tailwindStyles.container mx-auto flex items-center justify-center h-full z-20">
           <div className="relative after:content-['*'] after:absolute after:top-0 after:left-0 after:w-full after:h-full after:bg-black after:blur-2xl p-12">
             <div className="relative z-20 text-white text-center">
@@ -67,9 +68,9 @@ export const Home = () => {
             <h2>Discover the Thrills of Fly-Fishing and Hunting</h2>
             <p className="pb-8">Our blog dives deep into the art of fly-fishing and the excitement of hunting. Join us as we share tips, techniques, and stories that celebrate these outdoor passions.</p>
             <ul className="pb-8">
-              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(../public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Learn essential fly-fishing techniques for every angler.</li>
-              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(../public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Explore the best hunting spots and strategies.</li>
-              <li className="relative pl-12 before:content-[''] before:absolute before:left-0 before:top-1 before:w-6 before:h-6 before:bg-[url(../public/Layout/102/Relume.png)] before:bg-no-repeat before:bg-contain pb-4">Connect with fellow enthusiasts and share your adventures.</li>
+              <li className="relative pl-12 pb-4"><img className="absolute left-0 top-1 w-6 h-6" src={Relume} alt="" />Learn essential fly-fishing techniques for every angler.</li>
+              <li className="relative pl-12 pb-4"><img className="absolute left-0 top-1 w-6 h-6" src={Relume} alt="" />Explore the best hunting spots and strategies.</li>
+              <li className="relative pl-12 pb-4"><img className="absolute left-0 top-1 w-6 h-6" src={Relume} alt="" />Connect with fellow enthusiasts and share your adventures.</li>
             </ul>
             <div className={`${tailwindStyles.btnSpace}`}>
               <Button onClick={goToBlog} type="secondary">
@@ -202,16 +203,14 @@ export const Home = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 py-8">
               {blogs.slice(0, 3).map((blog) => (
                 <div key={blog.id}>
-                  <h2 className="text-2xl uppercase">{blog.title}</h2>
+                  <h4 className="uppercase pb-4">{blog.title}</h4>
                   <img width={450} src={blog.img} alt={blog.title} />
                   <div className="pb-4">
-                    {/* <small className="block py-2">{blog.tags}</small> */}
-                    <small className="block pb-2">{blog.date}</small>
                     <small className="block pb-2">{blog.description}</small>
                   </div>
-                  <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
+                  <p>{blog.content.split(". ").slice(0, 4).join(". ") + (blog.content.split(". ").length > 4 ? "..." : "")}</p>
                   <span className="flex justify-end">
-                    <Link to="/blogs">Read more</Link>
+                    <Link to={`/blog/${blog.id}`}>Read more</Link>
                   </span>
                 </div>
               ))}
@@ -222,11 +221,11 @@ export const Home = () => {
             <div>
               {blogs.slice(0, 3).map((blog) => (
                 <div key={blog.title}>
-                  <h2>{blog.title}</h2>
+                  <h4>{blog.title}</h4>
                   <img width={250} src={blog.img} alt={blog.title} />
-                  <p>{blog.content.split(". ").slice(0, 6).join(". ") + (blog.content.split(". ").length > 6 ? "..." : "")}</p>
+                  <p>{blog.content.split(". ").slice(0, 4).join(". ") + (blog.content.split(". ").length > 4 ? "..." : "")}</p>
                   <span className="flex justify-end">
-                    <Link to="/blogs">Read more</Link>
+                    <Link to={`/blog/${blog.id}`}>Read more</Link>
                   </span>
                 </div>
               ))}

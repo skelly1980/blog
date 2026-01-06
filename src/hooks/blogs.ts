@@ -1,4 +1,4 @@
-import { createBlog, getBlogs, updateBlog } from "../api/blogs";
+import { createBlog, getBlogs, updateBlog, getBlogsById } from "../api/blogs";
 import { Blog, BlogContent } from "../types/blog";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteBlog as apiDeleteBlog } from "../api/blogs";
@@ -32,7 +32,6 @@ export const useCreateBlog = () => {
       return await createBlog(createBlogObject.blog, createBlogObject.imageFile)
     },
     onSuccess: () => {
-      // This tells React Query to refetch blogs automatically
       queryClient.invalidateQueries({ queryKey: ["blogs"] });
     }
   })
@@ -63,6 +62,7 @@ export const useRemoveBlog = () => {
 }
 
 // export const useBlogsStore = () => {
+
 //   const [blogs, setBlogs] = useState<Blog[]>([]);
 
 //   //Calling backend to get blogs
@@ -101,3 +101,12 @@ export const useRemoveBlog = () => {
 //     updateBlog: update,
 //   };
 // };
+
+export const useGetBlogById = (id: string) => {
+  return useQuery({
+    queryFn: async () => await getBlogsById(id),
+    queryKey: ['blog', id],
+    enabled: !!id,
+    retry: false,
+  });
+};

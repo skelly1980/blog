@@ -19,6 +19,7 @@ import { Hockey } from "./pages/hockey.tsx";
 import { Outdoors } from "./pages/outdoors.tsx";
 import { createUser } from "./api/users.ts";
 import { ReactQueryProvider } from "./providers/ReactQueryProvider.tsx";
+import { BlogPost } from "./pages/BlogPost.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +36,7 @@ const router = createBrowserRouter(
         path="register"
         element={<Register createUser={createUser} onToggleMode={() => {}} />}
       />
+      <Route path="/blog/:id" element={<BlogPost />} />
       <Route path="*" element={<Redirect />} />
     </Route>,
   ),

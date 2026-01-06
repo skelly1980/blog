@@ -1,9 +1,10 @@
 import { Blog } from "../types/blog";
 import { Button } from "./buttons/Button";
 import { useState } from "react";
-import { CreateorUpdateBlogDialog } from "./CreateorUpdateBlogDialog"; 
+import { CreateorUpdateBlogDialog } from "./CreateorUpdateBlogDialog";
 import { useUpdateBlog } from "../hooks/blogs";
 import { BlogContent } from "../types/blog";
+import { Link } from "react-router-dom";
 
 type Props = {
   blogEntry: Blog;
@@ -21,16 +22,20 @@ export const BlogEntry = (props: Props) => {
   const toggleUpdateDialog = () => {
     setShowUpdateDialog(!showUpdateDialog);
   };
- 
-  const handleUpdate = async (data: BlogContent, id?: string, imageFile?: File | null) => {
+
+  const handleUpdate = async (
+    data: BlogContent,
+    id?: string,
+    imageFile?: File | null,
+  ) => {
     if (id) {
-      const updatedBlog: Blog = { 
-        ...blogEntry, 
-        ...data, 
+      const updatedBlog: Blog = {
+        ...blogEntry,
+        ...data,
         id,
-        date: blogEntry.date 
+        date: blogEntry.date,
       };
-      updateBlog.mutate({blog: updatedBlog, imageFile});
+      updateBlog.mutate({ blog: updatedBlog, imageFile });
     }
   };
 
@@ -47,11 +52,18 @@ export const BlogEntry = (props: Props) => {
     <div>
       <h4>{blogEntry.title}</h4>
       <div className="py-4">{blogEntry.description}</div>
-      {blogEntry.img && blogEntry.img.trim() && <img width={450} src={blogEntry.img} alt={blogEntry.title} />}
+      {blogEntry.img && blogEntry.img.trim() && (
+        <img width={450} src={blogEntry.img} alt={blogEntry.title} />
+      )}
       <div className="pt-4">{blogEntry.content}</div>
-      <div className="flex gap-4 w-40 py-2">
+      <div>
+        <Link to={`/blog/${blogEntry.id}`}>
+          <Button type="secondary">Read Full Post</Button>
+        </Link>
+      </div>
+      <div className="flex w-40 gap-4 py-2">
         <Button onClick={handleDeleteClick} type="warning">
-          {isDeleting ? 'Deleting…' : 'Delete'}
+          {isDeleting ? "Deleting…" : "Delete"}
         </Button>
         <Button onClick={toggleUpdateDialog} type="warning">
           Update
