@@ -24,6 +24,7 @@ type UpdateBlogObject = {
   imageFile?: File | null;
 }
 
+const QUERY_KEY = "blogs";
 
 export const useCreateBlog = () => {
   const queryClient = useQueryClient();
@@ -32,7 +33,7 @@ export const useCreateBlog = () => {
       return await createBlog(createBlogObject.blog, createBlogObject.imageFile)
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
     }
   })
 }
@@ -44,7 +45,7 @@ export const useUpdateBlog = () => {
       return await updateBlog(updatedBlogObject.blog, updatedBlogObject.imageFile)
     },
      onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
     }
   })
 }
@@ -56,51 +57,10 @@ export const useRemoveBlog = () => {
       return await apiDeleteBlog(id);
     },
      onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["blogs"] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY] });
     }
   })
 }
-
-// export const useBlogsStore = () => {
-
-//   const [blogs, setBlogs] = useState<Blog[]>([]);
-
-//   //Calling backend to get blogs
-//   const getBlogsData = async () => {
-//     const blogs = await getBlogs();
-//     setBlogs(blogs);
-//   };
-
-//   useEffect(() => {
-//     getBlogsData();
-//   }, []);
-
-//   const create = async (blog: BlogContent, imageFile?: File | null) => {
-//     const newBlog = await createBlog(blog, imageFile);
-//     setBlogs((prev) => [...prev, newBlog]);
-//     return newBlog;
-//   };
-
-//   const update = async (
-//     blog: Blog,
-//     imageFile?: File | null
-//   ) => {
-//     const updatedBlog = await updateBlog(blog, imageFile);
-//     setBlogs((prev) => prev.map((b) => (b.id === blog.id ? updatedBlog:b)));
-//     return updatedBlog
-//   }
-
-//   const removeBlog = async (id: string) => {
-//     await apiDeleteBlog(id);
-//   };
-
-//   return {
-//     blogs,
-//     removeBlog,
-//     createBlog: create,
-//     updateBlog: update,
-//   };
-// };
 
 export const useGetBlogById = (id: string) => {
   return useQuery({
